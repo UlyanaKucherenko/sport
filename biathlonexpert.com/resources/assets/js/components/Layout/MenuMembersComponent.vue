@@ -152,7 +152,7 @@ export default {
 <style lang="scss" scoped>
 
 .members-menu {
-  padding: 25px 0 25px;
+  padding: 25px 0 80px;
 
   .wrap-nav {
     display: flex;

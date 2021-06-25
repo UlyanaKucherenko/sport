@@ -1379,7 +1379,7 @@ a:hover {
 }
 
 .members-menu-top {
-  padding: 25px 0 25px;
+  padding: 25px 0 70px;
   background-color: #1D1D1D;
 }
 
@@ -2298,7 +2298,7 @@ a:hover {
 }
 
 .member-profile {
-  padding: 72px 0 40px 0;
+  padding: 0 0 40px 0;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2771,6 +2771,44 @@ a:hover {
   #section-trainings .trainings__header .date-nav__item {
     width: 100%;
   }
+}
+
+.member-btn {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 15px 52px 14px;
+  color: #fff;
+  background: var(--color-member-area);
+  border: 2px solid var(--color-member-area);
+  border-radius: 8px;
+  box-shadow: 0 4px 23px rgba(var(--color-member-area), 0.5);
+  cursor: pointer;
+}
+
+.member-btn:hover {
+  border: 2px solid white;
+  background-color: transparent;
+  transition: all 0.3s ease-out;
+}
+
+.member-btn--reversed {
+  color: var(--color-member-area);
+  background: transparent;
+  border: 2px solid var(--color-member-area);
+}
+
+.member-btn--reversed:hover {
+  color: #fff;
+  background: var(--color-member-area);
+  border: 2px solid var(--color-member-area);
+}
+
+.member-title {
+  width: 100%;
+  font-size: 34px;
+  color: #FFFFFF;
+  text-align: left;
 }
 
 #privacy-policy {

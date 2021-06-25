@@ -9,25 +9,16 @@
           :planName="planName"
           btnName="Unsubscribe"
       />
-      <div class="member-manage__subtitle">Available plans</div>
-      <div class="member-manage__plans">
-        <div class="member-manage__plan" v-for="">
-          <div class="member-manage__plan-title">Medium</div>
-          <div class="member-manage__plan-price">49.85 €</div>
+      <div class="member-manage__subtitle member-title">Available plans</div>
+      <div class="member-manage__plans" v-if="currentPlan<2">
+        <div class="member-manage__plan" v-for="(text, index) in planTexts" v-if="currentPlan<index+1">
+          <div class="member-manage__plan-title">{{text.title}}</div>
+          <div class="member-manage__plan-price">{{plans[index].price}} €</div>
           <div class="member-manage__plan-text">
-            <div>5 ebooks per month.</div>
-            <div>Personal consultant for a month.</div>
+            {{text.text1}}<br>
+            {{text.text2}}<br>
           </div>
-          <button class="member-manage__plan-btn"> Upgrade</button>
-        </div>
-        <div class="member-manage__plan">
-          <div class="member-manage__plan-title">Medium</div>
-          <div class="member-manage__plan-price">49.85 €</div>
-          <div class="member-manage__plan-text">
-            <div>5 ebooks per month.</div>
-            <div>Personal consultant for a month.</div>
-          </div>
-          <button class="member-manage__plan-btn"> Upgrade</button>
+          <button @click="upgrade(index+1)" class="member-manage__plan-btn member-btn">{{ btnUpgrade }}</button>
         </div>
       </div>
 
@@ -321,11 +312,6 @@ export default {
     order: 1;
   }
   &__plan-btn {
-    background: #FF1212;
-    color: #fff;
-    border-radius: 8px;
-    border: none;
-    padding: 10px 15px;
     width: fit-content;
   }
 
