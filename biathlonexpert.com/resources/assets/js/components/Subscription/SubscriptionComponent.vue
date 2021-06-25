@@ -6,6 +6,7 @@
           :totalBooks="totalBooks"
           :expirationData="expirationData"
           :availableBooks="availableBooks"
+          @upgrade="upgrade"
           :planName="planName"
           btnName="Unsubscribe"
       />

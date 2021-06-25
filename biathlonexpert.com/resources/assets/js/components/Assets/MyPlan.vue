@@ -16,10 +16,10 @@
           <span class="my-plan__number">{{ planName }}</span>
         </div>
       </div>
-      <button class="my-plan__btn" v-if="btnName === 'Upgrade'" @click="upgrade(1)">
+      <button @click="$emit('upgrade')" class="my-plan__btn" v-if="btnName === 'Upgrade'">
         {{ btnName }}
       </button>
-      <button class="my-plan__btn my-plan__btn--reverse" v-else>
+      <button @click="showConfirm" class="my-plan__btn my-plan__btn--reverse" v-else>
         {{ btnName }}
       </button>
     </div>
@@ -69,15 +69,12 @@ export default {
     this.vocab = vocab;
   },
   methods: {
-    upgrade(toPlan) {
-
-      if (this.user) {
-        this.upgradingToPLan = toPlan;
-        this.createdIframe(this.user, toPlan);
-      }
-
-
+    upgrade() {
+      console.log('upgrade')
     },
+    showConfirm(){
+      console.log('showConfirm')
+    }
   }
 }
 </script>
