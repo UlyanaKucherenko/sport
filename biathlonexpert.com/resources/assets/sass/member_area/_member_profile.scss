@@ -1,0 +1,146 @@
+.member-profile {
+  padding: 72px 0 40px 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: calc(100vh - 190px);
+  background-color: #1D1D1D;
+
+  &__title {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 34px;
+    line-height: 135%;
+    margin-bottom: 50px;
+  }
+
+    &__body {
+      position: relative;
+      z-index: 2;
+      min-height: 500px;
+      border-radius: 0 0 10px 10px;
+    }
+
+  .form {
+    padding: 30px 60px;
+
+    &__row {
+      position: relative;
+      width: 100%;
+      padding-bottom: 23px;
+      margin-bottom: 15px;
+    }
+
+    &__lbl {
+      display: block;
+      font-size: 12px;
+      color: #F4F4F4;
+      letter-spacing: 0.4px;
+      position: absolute;
+      top: -8px;
+      left: 8px;
+      background-color: #1D1D1D;
+      padding: 0 5px;
+    }
+
+    &__inp,
+    &__sel {
+      display: block;
+      width: 100%;
+      height: 56px;
+      line-height: 24px;
+      font-family: $font;
+      font-size: 16px;
+      color: #FFFFFF;
+      border: 1px solid #8E8E8E;
+      border-radius: 8px;
+      background-color: transparent;
+      outline: none;
+      padding: 0 25px;
+
+      &.required {
+        color: $red;
+        border-color: $red;
+      }
+    }
+
+    .required-text {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-size: 12px;
+      min-height: 20px;
+      line-height: 16px;
+      color: $red;
+      text-align: right;
+      z-index: 1;
+    }
+
+    &__btn {
+      display: block;
+      width: 100%;
+      max-width: 190px;
+      min-height: 60px;
+      line-height: 60px;
+      font-family: $font;
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: capitalize;
+      margin: 0 auto;
+      color: #fff;
+      background: var(--color-member-area);
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 23px rgba(var(--color-member-area), 0.5);
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .member-profile {
+    .head-tab {
+      &__text {
+        font-size: 20px;
+      }
+    }
+
+    .form {
+      padding: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .member-profile {
+    padding: 0 0 25px;
+
+    .head-tab {
+      &__text {
+        display: none;
+      }
+    }
+
+    .form {
+      &__row {
+        max-width: 100%;
+      }
+
+      &__btn {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .member-profile {
+    padding: 0 0 15px;
+
+    .form {
+      padding: 15px;
+    }
+  }
+}

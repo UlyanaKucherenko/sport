@@ -1,0 +1,334 @@
+<template>
+  <section class="member-manage">
+    <div class="container">
+      <MyPlan
+          :local="locale"
+          :totalBooks="totalBooks"
+          :expirationData="expirationData"
+          :availableBooks="availableBooks"
+          :planName="planName"
+          btnName="Unsubscribe"
+      />
+      <div class="member-manage__subtitle">Available plans</div>
+      <div class="member-manage__plans">
+        <div class="member-manage__plan" v-for="">
+          <div class="member-manage__plan-title">Medium</div>
+          <div class="member-manage__plan-price">49.85 €</div>
+          <div class="member-manage__plan-text">
+            <div>5 ebooks per month.</div>
+            <div>Personal consultant for a month.</div>
+          </div>
+          <button class="member-manage__plan-btn"> Upgrade</button>
+        </div>
+        <div class="member-manage__plan">
+          <div class="member-manage__plan-title">Medium</div>
+          <div class="member-manage__plan-price">49.85 €</div>
+          <div class="member-manage__plan-text">
+            <div>5 ebooks per month.</div>
+            <div>Personal consultant for a month.</div>
+          </div>
+          <button class="member-manage__plan-btn"> Upgrade</button>
+        </div>
+      </div>
+
+      <transition name="modal-error">
+        <div class="modal-error" v-if="modalError">
+          <div class="modal-error__text">{{ modalErrorText }}</div>
+        </div>
+      </transition>
+      <section id="cart-modal-iframe" :class="{'cart-modal-iframe':showSelectPlanIframe}"></section>
+
+      <popup-success
+        :msgText="popup_text"
+        :popup-type="popup_type"
+        :show-popup="show_popup"
+        @closePopup="closePopup"
+      ></popup-success>
+      <confirm
+        :unsubscribe_route="routes.unsubscribe"
+        :show-confirm="show_confirm"
+        @closeConfirm="closeConfirm"
+      ></confirm>
+    </div>
+  </section>
+</template>
+
+<script>
+
+import vocab from '../../translates/member_area/manage';
+import confirm from '../Popup/PopupConfirm';
+import MyPlan from "../Assets/MyPlan";
+
+export default {
+  name: "SubscriptionComponent",
+  components: {MyPlan, confirm},
+  props: {
+    totalBooks: {
+      type: Number,
+      require: true
+    },
+    availableBooks: {
+      type: Number,
+      require: true
+    },
+    data: {
+      type: Object,
+      require: true
+    },
+    locale: {
+      type: String,
+      require: true
+    },
+    expirationData: {
+      type: String,
+      require: true
+    },
+    routes: {
+      type: Object,
+      require: true
+    },
+    planTexts: {},
+    plans: {},
+    user: {},
+    unsubscribeErrors: {
+      type: String
+    }
+  },
+  data() {
+    return {
+      vocab: {},
+      currentPlan: 'Beginner',
+      // plans: ['Beginner', 'Basic', 'Pro'],
+      showSelectPlan: false,
+      modalError: false,
+      modalErrorText: '',
+      api_url: 'https://mmsafecheckout.com',
+      show_popup: false,
+      showSelectPlanIframe: false,
+      popup_type: 'error',
+      popup_text: 'error',
+      show_confirm: false,
+      upgradingToPLan: 0,
+      forWeek: "for a week",
+      forMonth: "For month",
+      btnUpgrade: "Upgrade",
+      descriptor: "https://lmarkbill.com",
+
+    }
+  },
+  created() {
+    this.vocab = vocab;
+    this.currentPlan = this.user.plan_id - 1;
+    console.log(this.unsubscribeErrors);
+    if (this.unsubscribeErrors.length > 2) {
+      this.showPopup(this.unsubscribeErrors, "error");
+    }
+    window.addEventListener('message', this.detectIframeEvent, false);
+  },
+  destroyed() {
+    window.removeEventListener('message', this.detectIframeEvent);
+  },
+  computed: {
+    planName() {
+      return this.plans[this.currentPlan].slug;
+    }
+
+  },
+  mounted() {
+    this.forWeek = this.vocab[this.locale].week;
+    this.forMonth = this.vocab[this.locale].month;
+    this.btnUpgrade = this.vocab[this.locale].upgrade;
+  },
+  methods: {
+    async detectIframeEvent(e) {
+      if ("origin" in e && "data" in e && e.origin === this.api_url) {
+
+        const {status, action} = e.data;
+
+        switch (true) {
+          case (status === "ok" && action === "close"):
+            this.closeIframeHandel();
+            break;
+          case (status === "ok" && action === "payment_success"):
+
+            this.closeIframeHandel();
+            //console.log('e=',e.data);
+            const makePayment = await axios({
+              method: 'post',
+              data: {
+                order_id: e.data.order_id,
+                plan_id: this.upgradingToPLan,
+              },
+              url: this.routes.set_confirm,
+            })
+              .then(res => {
+                console.log(res);
+                return res.data;
+              });
+
+            if (makePayment.status === "updated") {
+              console.log(makePayment.user);
+              location.href = this.routes.dashboard;
+            }
+            break;
+        }
+      }
+    },
+    closeIframeHandel() {
+      this.showSelectPlanIframe = false;
+      const cardIframeSection = document.getElementById("cart-modal-iframe");
+      cardIframeSection.innerHTML = "";
+    },
+    setInitPlan() {
+      const currentPlan = _.find(this.plans, (el) => el.currentPlan) ? _.find(this.plans, (el) => el.currentPlan) : this.plans[0];
+      this.currentPlan = currentPlan - 1;
+      return {
+        id: currentPlan.id,
+        price: currentPlan.price,
+        title: currentPlan.plan_text[0].title,
+        text1: currentPlan.plan_text[0].text1,
+        text2: currentPlan.plan_text[0].text2,
+      };
+    },
+    createdIframe(user = null, toPlan = 2) {
+      this.showSelectPlanIframe = true;
+      const data = {
+          email: user.email,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          address: user.address,
+          city: user.city,
+          //TODO add real Country!
+          country: 'UnitedStates',//user.country,
+          phone: user.phone,
+          postal_code: user.postal_code,
+          plan_id: toPlan,
+          plan_name: this.plans[toPlan - 1].slug,
+          plan_price: this.plans[toPlan - 1].price,
+          // home: window.location.hostname,
+          home: 'https://biathlonexpert.com',
+          contact_phone: '+48 71 881 00 24',
+          descriptor: "https://lmarkbill.com",
+        }
+      ;
+      const cardIframeSection = document.getElementById("cart-modal-iframe");
+      const cardIframe = document.createElement("iframe");
+      const queryString = data ? Object.keys(data).map(key => key + '=' + data[key]).join('&') : "";
+
+      cardIframe.setAttribute("src", this.api_url + "/card?" + queryString);
+
+      cardIframeSection.appendChild(cardIframe);
+    },
+    upgrade(toPlan) {
+
+      if (this.user) {
+        this.upgradingToPLan = toPlan;
+        this.createdIframe(this.user, toPlan);
+      }
+
+
+    },
+    showPopup(text, type) {
+      this.popup_text = text;
+      this.popup_type = type;
+      this.show_popup = true;
+    },
+    showConfirm() {
+      this.show_confirm = true;
+    },
+    closePopup() {
+      this.show_popup = false;
+    },
+    closeConfirm() {
+      this.show_confirm = false;
+    },
+  }
+}
+</script>
+
+<style lang="scss">
+
+.alert {
+  position: relative;
+  padding: .75rem 2rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  font-family: RobotoRegular, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.member-manage {
+
+  &__subtitle {
+    margin-bottom: 16px;
+  }
+
+  &__plans {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      width: 100%;
+      row-gap: 15px;
+      margin: 0 auto;
+    }
+  }
+  &__plan {
+    background-color: #353535;
+    border-radius: 16px;
+    padding: 32px 40px 40px;
+
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 15px;
+  }
+
+  &__plan-title {
+    font-size: 34px;
+    line-height: 46px;
+    letter-spacing: 0.0025em;
+    color: #FFFFFF;
+  }
+
+  &__plan-price {
+    font-size: 48px;
+    line-height: 65px;
+    color: #FF1212;
+    text-align: right;
+  }
+
+  &__plan-text {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: right;
+    letter-spacing: 0.005em;
+    color: #FFFFFF;
+    order: 1;
+  }
+  &__plan-btn {
+    background: #FF1212;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 15px;
+    width: fit-content;
+  }
+
+}
+
+</style>
