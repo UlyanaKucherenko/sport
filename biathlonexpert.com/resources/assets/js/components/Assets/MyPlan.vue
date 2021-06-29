@@ -24,18 +24,29 @@
       </button>
     </div>
 
+    <confirm
+      :show-confirm="show_confirm"
+      @closeConfirm="closeConfirm"
+    ></confirm>
+
   </div>
 
 </template>
 
 <script>
 import vocab from '../../translates/member_area/myplan';
+import Confirm from "../Popup/PopupConfirm";
 
 export default {
   name: "MyPlan",
+  components: {Confirm},
   props: {
     locale: {
       type: String,
+      require: true
+    },
+    routes: {
+      type: Object,
       require: true
     },
     expirationData: {
@@ -72,9 +83,12 @@ export default {
     upgrade() {
       console.log('upgrade')
     },
-    showConfirm(){
-      console.log('showConfirm')
-    }
+    showConfirm() {
+      this.show_confirm = true;
+    },
+    closeConfirm() {
+      this.show_confirm = false;
+    },
   }
 }
 </script>

@@ -1,97 +1,100 @@
-.membersMenu {
-  //position: relative;
-  //float: left;
-  //top: 0;
-  //left: 0;
-  //width: 150px;
-  //height: 100vh;
-  //background: #fff;
-  //transition: all .7s linear;
-  //z-index: 1;
+.members-menu {
+  padding: 25px 0 80px;
 
-  .wrapMenu {
-    .menu-profile {
+  .wrap-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .wrap {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menuList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 20px;
+
+    &__item {
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__item-link {
+      color: #F0F0F0;
+
+      &:hover,
+      &.active {
+        color: #FF1212;
+      }
+    }
+  }
+
+  .members-block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 20px;
+    letter-spacing: 0.0015em;
+    color: #F0F0F0;
+    text-decoration: none;
+    margin-right: 0px;
+
+    &__members-info {
       display: flex;
-      flex-direction: column;
+      margin-right: 20px;
+    }
+
+    &__weather {
+      margin-right: 20px;
+    }
+
+    &__time,
+    &__weather {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+
+    &__profile {
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin: 25px 0;
+      flex-wrap: nowrap;
+      font-size: 20px;
+    }
 
-      &__photo {
-        position: relative;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background-color: #F9F9F9;
-        overflow: hidden;
+    &__profile-link {
+      color: #F0F0F0;
+      display: contents;
 
-        svg {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+      svg {
+        margin-left: 5px;
+        width: 40px;
+        height: 40px;
+      }
+
+      &:hover,
+      &.active {
+        color: #FF1212;
+
+        path {
+          fill: red;
         }
-      }
-
-      &__name {
-        color: var(--color-member-area);
-        font-size: 14px;
-        font-weight: 600;
-        margin-top: 10px;
-      }
-
-      &__years {
-        color: #898888;
-        font-size: 13px;
-        margin-top: 5px;
       }
     }
 
-    .menuList {
-      text-align: center;
-
-      .text-slide {
-      //  display: flex;
-      //  flex-direction: column;
-      //  align-items: center;
-      //  justify-content: center;
-      //  width: 100%;
-      //  min-height: 106px;
-      //  font-size: 14px;
-      //  line-height: 20px;
-      //  font-weight: 600;
-      //  color: #898888;
-      //  text-decoration: none;
-      //  text-transform: capitalize;
-      //  border-radius: 10px;
-
-        &__icon {
-          margin-bottom: 15px;
-        }
-
-        &.active {
-          color: #fff;
-          background: var(--color-member-area);
-
-          .text-slide__icon {
-            path {
-              fill: #fff;
-            }
-          }
-        }
-
-        &:hover {
-          color: #fff;
-          background: var(--color-member-area);
-
-          .text-slide__icon {
-            path {
-              fill: #fff;
-            }
-          }
-        }
-      }
-    }
   }
 
   .btn-menu-open {
@@ -107,7 +110,7 @@
     &:before,
     &:after {
       border-radius: 3px;
-      background: #000;
+      background: #fff;
       content: '';
       display: block;
       height: 3px;
@@ -115,6 +118,7 @@
       width: 100%;
       transition: all .25s linear;
     }
+
   }
 
   .btn-menu-close {
@@ -157,126 +161,21 @@
     }
   }
 
-  .members_menu_toggle {
-    display: none;
-  }
-}
-
-.members-menu-top {
-  padding: 25px 0 70px;
-  background-color: #1D1D1D;
-
-  .wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .date-today {
-      display: inline-block;
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
-      background: var(--color-member-area);
-      padding: 8px 22px;
-      border-radius: 4px;
-      box-shadow: 0 5px 19px rgba(var(--color-member-area), 0.2);
+  @media screen and (max-width: 1200px) {
+    .menuList {
+      display: none;
     }
-
-    .logout {
+    .members-block {
       display: flex;
-      align-items: center;
-      text-decoration: none;
+      flex-direction: column;
+      align-items: flex-end;
 
-      &__text {
-        font-size: 14px;
-        font-weight: 600;
-        color: #898888;
-      }
-
-      &__img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 45px;
-        height: 45px;
-        background: var(--color-member-area);
-        box-shadow: 0 5px 29px rgba(var(--color-member-area)  , 0.3);
-        border-radius: 10px;
-        margin-left: 10px;
+      &__members-info {
+        margin-right: 0;
       }
     }
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .membersMenu {
-    .wrapMenu {
-      .menuList {
-        .text-slide {
-          min-height: 80px;
-        }
-      }
-    }
-  }
-}
-
-// === Small device === //
-@media screen and (max-width: 767px) {
-
-  .membersMenu {
-    //position: fixed;
-    //width: 100%;
-    //height: 60px;
-    //z-index: 5;
-
     .btn-menu-open {
       display: block;
-    }
-
-    .wrapMenu {
-      opacity: 0;
-      visibility: hidden;
-      position: fixed;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      background: #FCFCFC;
-      transition: all .25s linear;
-
-      &.wrapMenuOpen {
-        opacity: 1;
-        visibility: visible;
-        transition: all .25s linear;
-        overflow: auto;
-        padding-bottom: 80px;
-      }
-    }
-  }
-
-  .members-menu-top {
-    padding: 80px 0 25px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .members-menu-top {
-    .wrap {
-      .date-today {
-        font-size: 14px;
-        padding: 8px 10px;
-      }
-
-      .logout {
-        &__img {
-          width: 35px;
-          height: 35px;
-
-          svg {
-            width: 20px;
-          }
-        }
-      }
     }
   }
 }

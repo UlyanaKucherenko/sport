@@ -12,6 +12,7 @@
             :plan-texts="{{ $planTexts }}"
             :plans="{{ $plans }}"
             :user="{{ $user }}"
+{{--            :routes="{{ $routes }}"--}}
     ></dashboard-page>
 
 @endsection

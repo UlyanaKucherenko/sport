@@ -102,11 +102,11 @@ export default {
       menuOpen: false,
       vocab: {},
       time: '',
-      info: null,
+      info: 0,
     }
   },
-    mounted() {
-      fetch('https://api.openweathermap.org/data/2.5/weather?q=Zaporizhzhia,ua&appid=feb027b3faea87405a0cd6954a7dea30')
+    async mounted() {
+      await fetch('https://api.openweathermap.org/data/2.5/weather?q=Zaporizhzhia,ua&appid=feb027b3faea87405a0cd6954a7dea30')
       .then(response => response.json())
       .then(json => this.info = json)
 
