@@ -40,7 +40,7 @@ export default {
         slidesToShow: 6,
         slidesToScroll: 1,
         speed: 1200,
-        autoplay: true,
+        autoplay: false,
         arrows: true,
         prevArrow: '<span class="dash-slider__prev"></span>',
         nextArrow: '<span class="dash-slider__next"></span>',
@@ -93,3 +93,16 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.RecentBooks {
+  .slide-item {
+    background-color: #0db56f;
+  }
+
+  .slick-slide {
+    background-color: #0db56f;
+  }
+}
+
+.slide-item:not(.slick_current) { opacity:.5; }
+</style>

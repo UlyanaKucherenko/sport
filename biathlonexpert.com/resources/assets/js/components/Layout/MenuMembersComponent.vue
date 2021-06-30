@@ -3,7 +3,7 @@
     <section class="members-menu">
       <div class="container">
         <div class="wrap">
-          <div class="wrap-nav">
+          <nav class="wrap-nav">
             <div class="btn-menu-open"
                  @click="menuOpen = !menuOpen">
               <span class="btn-menu-line"></span>
@@ -32,22 +32,12 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </nav>
           <div class="members-block">
             <div class="members-block__members-info">
               <div class="members-block__weather">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0Z"
-                        fill="white"/>
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M13.3939 5.52655C13.2533 5.52655 13.1395 5.41263 13.1395 5.27212V4.25442C13.1395 4.11392 13.2533 4 13.3939 4C13.5344 4 13.6483 4.11392 13.6483 4.25442V5.27212C13.6483 5.41263 13.5344 5.52655 13.3939 5.52655ZM17.21 10.106C17.21 12.2136 15.5014 13.9223 13.3937 13.9223C11.2858 13.9223 9.57729 12.2136 9.57729 10.106C9.57729 7.99826 11.2858 6.28959 13.3937 6.28959C15.5014 6.28959 17.21 7.99826 17.21 10.106ZM18.2278 10.3606H19.2455C19.386 10.3606 19.4999 10.2467 19.4999 10.1062C19.4999 9.9657 19.386 9.85178 19.2455 9.85178H18.2278C18.0871 9.85178 17.9734 9.9657 17.9734 10.1062C17.9734 10.2467 18.0871 10.3606 18.2278 10.3606ZM9.83194 6.7986C9.76436 6.7986 9.69976 6.77176 9.65206 6.72406L8.63436 5.70636C8.56815 5.64251 8.54169 5.54784 8.56492 5.45889C8.58827 5.36995 8.65772 5.3005 8.74667 5.27727C8.83562 5.25391 8.93016 5.2805 8.99413 5.34659L10.0118 6.36429C10.0845 6.43709 10.1062 6.54653 10.0669 6.64157C10.0275 6.73661 9.93481 6.7986 9.83194 6.7986ZM16.721 6.64157C16.7604 6.73661 16.8531 6.7986 16.9561 6.7986C17.0236 6.7986 17.0883 6.77176 17.136 6.72406L18.1537 5.70636C18.2198 5.64251 18.2462 5.54784 18.223 5.45889C18.1998 5.36995 18.1302 5.3005 18.0412 5.27727C17.9523 5.25391 17.8578 5.2805 17.7939 5.34659L16.7762 6.36429C16.7034 6.43709 16.6817 6.54653 16.721 6.64157Z"
-                        fill="#727171"/>
-                  <path
-                      d="M16.4469 13.4139C16.2608 13.4139 16.0751 13.4325 15.8927 13.4693C15.7552 12.7829 15.3106 12.1974 14.6863 11.8805C14.0622 11.5636 13.3271 11.5503 12.6918 11.8444C12.1169 10.2607 10.3669 9.443 8.78325 10.0179C7.19955 10.593 6.38187 12.3429 6.95681 13.9266C5.56952 13.9705 4.47368 15.1186 4.49443 16.5065C4.5153 17.8943 5.64518 19.009 7.03321 19.0112H16.4469C17.9925 19.0112 19.2456 17.7583 19.2456 16.2126C19.2456 14.6669 17.9925 13.4139 16.4469 13.4139Z"
-                      fill="#1D1D1D"/>
-                </svg>
-                <span class="text"> {{ temperatureInCelsius(info.wind.deg)}}&deg;</span>
+                <img :src="'http://openweathermap.org/img/w/' + iconWeather + '.png' "  />
+                <span class="text"> {{temperatureInCelsius()}}&deg;</span>
               </div>
               <div class="members-block__time">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,12 +93,18 @@ export default {
       vocab: {},
       time: '',
       info: 0,
+      temp: 0,
+      iconWeather: ''
     }
   },
     async mounted() {
       await fetch('https://api.openweathermap.org/data/2.5/weather?q=Zaporizhzhia,ua&appid=feb027b3faea87405a0cd6954a7dea30')
       .then(response => response.json())
       .then(json => this.info = json)
+      this.temp = this.info.wind.deg
+      this.iconWeather = this.info.weather[0].icon
+      console.log('info=>',this.info)
+      console.log('weather=>',this.iconWeather)
 
   },
   created() {
@@ -141,8 +137,8 @@ export default {
     getTime() {
       this.time = new Date().toLocaleTimeString('uk-UA', {hour: 'numeric', minute: 'numeric'});
     },
-    temperatureInCelsius(temp) {
-      return Math.round((temp-32)*5/9);
+    temperatureInCelsius() {
+      return Math.round((this.temp - 32) * 5 / 9);
     },
   }
 
@@ -151,184 +147,4 @@ export default {
 
 <style lang="scss" scoped>
 
-.members-menu {
-  padding: 25px 0 80px;
-
-  .wrap-nav {
-    display: flex;
-    align-items: center;
-  }
-
-  .wrap {
-    display: grid;
-    justify-content: space-between;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .menuList {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    font-size: 20px;
-
-    &__item {
-      margin-right: 20px;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-
-    &__item-link {
-      color: #F0F0F0;
-
-      &:hover,
-      &.active {
-        color: #FF1212;
-      }
-    }
-  }
-
-  .members-block {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: wrap;
-    font-size: 20px;
-    letter-spacing: 0.0015em;
-    color: #F0F0F0;
-    text-decoration: none;
-    margin-right: 20px;
-
-    &__members-info {
-      display: flex;
-      margin-right: 20px;
-    }
-
-    &__weather {
-      margin-right: 20px;
-    }
-
-    &__time,
-    &__weather {
-      display: flex;
-      align-items: center;
-
-      svg {
-        margin-right: 10px;
-      }
-    }
-
-    &__profile {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: nowrap;
-      font-size: 20px;
-    }
-
-    &__profile-link {
-      color: #F0F0F0;
-      display: contents;
-
-      svg {
-        margin-left: 5px;
-        width: 40px;
-        height: 40px;
-      }
-
-      &:hover,
-      &.active {
-        color: #FF1212;
-
-        path {
-          fill: red;
-        }
-      }
-    }
-
-  }
-
-  .btn-menu-open {
-    display: none;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    float: right;
-    margin-top: 9px;
-    margin-right: 15px;
-
-    .btn-menu-line,
-    &:before,
-    &:after {
-      border-radius: 3px;
-      background: #fff;
-      content: '';
-      display: block;
-      height: 3px;
-      margin: 8px 0;
-      width: 100%;
-      transition: all .25s linear;
-    }
-
-  }
-
-  .btn-menu-close {
-    position: relative;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    float: right;
-    margin-top: 9px;
-    margin-right: 15px;
-
-    &:before {
-      position: absolute;
-      top: 10px;
-      left: 0;
-      border-radius: 3px;
-      background: #000;
-      content: '';
-      display: block;
-      height: 3px;
-      margin: 8px 0;
-      width: 100%;
-      transition: all .25s linear;
-      transform: rotate(45deg);
-    }
-
-    &:after {
-      position: absolute;
-      top: 10px;
-      right: 0;
-      border-radius: 3px;
-      background: #000;
-      content: '';
-      display: block;
-      height: 3px;
-      margin: 8px 0;
-      width: 100%;
-      transition: all .25s linear;
-      transform: rotate(-45deg);
-    }
-  }
-
-  @media screen and (max-width: 1200px) {
-    .menuList {
-      display: none;
-    }
-    .members-block {
-      display: flex;
-      flex-direction: column;
-
-      &__members-info {
-        margin-right: 0;
-      }
-    }
-    .btn-menu-open {
-      display: block;
-    }
-  }
-}
 </style>

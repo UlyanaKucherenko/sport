@@ -28,9 +28,12 @@
     &__slide {
       display: block !important;
       max-width: 256px;
-      height: 390px;
       margin: 0 auto;
       z-index: 0;
+    }
+
+    .slick-current {
+      opacity: 0.5;
     }
 
     &__img {

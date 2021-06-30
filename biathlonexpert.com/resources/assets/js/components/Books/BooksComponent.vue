@@ -1,15 +1,22 @@
 <template>
   <section class="member-books">
     <div class="container">
-        <!--                    <RecentBooks-->
-        <!--                            v-if="showRecent"-->
-        <!--                            :title="this.vocab[this.locale].title"-->
-        <!--                            :recent-books="newDownloads"-->
-        <!--                            :downloading="downloading"-->
-        <!--                    ></RecentBooks>-->
+      <!--                    <RecentBooks-->
+      <!--                            v-if="showRecent"-->
+      <!--                            :title="this.vocab[this.locale].title"-->
+      <!--                            :recent-books="newDownloads"-->
+      <!--                            :downloading="downloading"-->
+      <!--                    ></RecentBooks>-->
 
 
-      <MyPlan />
+      <MyPlan
+          :local="locale"
+          :expirationData="expirationData"
+          :totalBooks="totalBooks"
+          :availableBooks="availableBooks"
+          :planName="planName"
+          btnName="Upgrade"
+      />
 
       <div class="row">
         <div class="pagination">
@@ -35,10 +42,10 @@
 
     </div>
     <popup-success
-      msgText="Download limit reached"
-      popup-type="error"
-      :show-popup="showPopup"
-      @closePopup="showPopup = !showPopup"
+        msgText="Download limit reached"
+        popup-type="error"
+        :show-popup="showPopup"
+        @closePopup="showPopup = !showPopup"
     ></popup-success>
   </section>
 </template>
@@ -106,19 +113,19 @@ export default {
     this.newDownloads = [...this.recentBooks];
     this.downloadedBooks = this.availableBooks;
     (
-      {
-        data: this.books,
-        current_page: this.currentPage,
-        first_page_url: this.first_page_url,
-        last_page: this.last_page,
-        last_page_url: this.last_page_url,
-        next_page_url: this.next_page_url,
-        path: this.path,
-        per_page: this.per_page,
-        prev_page_url: this.prev_page_url,
-        to: this.to,
-        total: this.total,
-      } = this.props_books_data
+        {
+          data: this.books,
+          current_page: this.currentPage,
+          first_page_url: this.first_page_url,
+          last_page: this.last_page,
+          last_page_url: this.last_page_url,
+          next_page_url: this.next_page_url,
+          path: this.path,
+          per_page: this.per_page,
+          prev_page_url: this.prev_page_url,
+          to: this.to,
+          total: this.total,
+        } = this.props_books_data
     );
 
     if (this.downloadErrors.length > 2) {

@@ -287,7 +287,7 @@ html {
   --color-black: #000;
   --color-member-area: #FF1212;
   --color-docs-bg: #000000e0;
-  --color-menu-bg: black;
+  --color-menu-bg: white;
   --color-header-color: var(--color-text);
   --color-header-bg-base: black;
   --color-header-bg-scrolled: #212529a8;
@@ -1460,9 +1460,12 @@ a:hover {
 .member-dashboard .dash-slider__slide {
   display: block !important;
   max-width: 256px;
-  height: 390px;
   margin: 0 auto;
   z-index: 0;
+}
+
+.member-dashboard .dash-slider .slick-current {
+  opacity: 0.5;
 }
 
 .member-dashboard .dash-slider__img {
@@ -1802,9 +1805,9 @@ a:hover {
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  color: var(--color-member-area);
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+  color: white;
+  background-color: transparent;
+  border: none;
 }
 
 .member-books .pagination .page-item.disabled .page-link {
