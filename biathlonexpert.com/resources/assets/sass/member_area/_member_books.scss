@@ -163,7 +163,7 @@
       &:hover {
 
         .books-container__btn {
-          display: inline-flex;
+          display: block;
         }
       }
     }
@@ -211,16 +211,6 @@
       background: var(--color-member-area);
       box-shadow: 0 4px 10px rgba(var(--color-member-area), 0.3);
       text-decoration: none;
-
-      //&-arrow {
-      //  font-size: 18px;
-      //  line-height: 18px;
-      //  font-weight: 900;
-      //}
-      //
-      //&-text {
-      //  font-size: 12px;
-      //}
     }
   }
 

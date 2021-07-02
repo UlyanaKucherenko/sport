@@ -8,7 +8,6 @@
         :availableBooks="availableBooks"
         :planName="planName"
         btnName="Upgrade"
-        @upgrade="upgrade"
       />
     </div>
     <div class="dash-block">
@@ -115,13 +114,6 @@ export default {
       this.$nextTick(() => {
         this.$refs.slick.reSlick();
       });
-    },
-    upgrade(toPlan) {
-
-      if (this.user) {
-        this.upgradingToPLan = toPlan;
-        this.createdIframe(this.user, toPlan);
-      }
     },
   }
 }

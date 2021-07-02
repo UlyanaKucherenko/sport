@@ -1,14 +1,6 @@
 <template>
   <section class="member-books">
     <div class="container">
-      <!--                    <RecentBooks-->
-      <!--                            v-if="showRecent"-->
-      <!--                            :title="this.vocab[this.locale].title"-->
-      <!--                            :recent-books="newDownloads"-->
-      <!--                            :downloading="downloading"-->
-      <!--                    ></RecentBooks>-->
-
-
       <MyPlan
           :local="locale"
           :expirationData="expirationData"
@@ -33,12 +25,17 @@
             <div class="books-container__text">{{ book.title }}</div>
             <a class="books-container__btn" :href="`books/${book.id}`" @mousedown="handleClick(book)">
               <img src="/img/errow-download.svg"/>
-              <!--                            <span class="books-container__btn-arrow">&#129075;</span>-->
-              <!--                            <span class="books-container__btn-text">Pdf</span>-->
             </a>
           </div>
         </div>
       </div>
+
+      <!--                    <RecentBooks-->
+      <!--                            v-if="showRecent"-->
+      <!--                            :title="this.vocab[this.locale].title"-->
+      <!--                            :recent-books="newDownloads"-->
+      <!--                            :downloading="downloading"-->
+      <!--                    ></RecentBooks>-->
 
     </div>
     <popup-success
@@ -72,6 +69,10 @@ export default {
       type: Number,
       require: true
     },
+    expirationData: {
+      type: String,
+      require: true
+    },
     routes: {},
     recentBooks: {
       type: Array
@@ -84,6 +85,8 @@ export default {
       type: String,
       require: true
     },
+    planTexts: {},
+    plans: {},
   },
   components: {MyPlan, RecentBooks},
   data() {

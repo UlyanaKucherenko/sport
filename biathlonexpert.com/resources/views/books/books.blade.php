@@ -11,6 +11,7 @@
             :plan="{{ $plan }}"
             locale="{{ $locale }}"
             download-errors="{{ $errors }}"
+{{--            :plans="{{ $plans }}"--}}
 {{--            :plan-texts="{{ $planTexts }}"--}}
     ></books-page>
 

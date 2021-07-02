@@ -16,12 +16,12 @@
           <span class="my-plan__number">{{ planName }}</span>
         </div>
       </div>
-      <button @click="$emit('upgrade')" class="my-plan__btn" v-if="btnName === 'Upgrade'">
+      <a href="/member_area/manage" class="my-plan__btn" v-if="btnName === 'Upgrade'">
         {{ btnName }}
-      </button>
-      <button @click="showConfirm" class="my-plan__btn my-plan__btn--reverse" v-else>
+      </a>
+      <a @click="showConfirm" class="my-plan__btn my-plan__btn--reverse" v-else>
         {{ btnName }}
-      </button>
+      </a>
     </div>
 
     <confirm
@@ -80,9 +80,6 @@ export default {
     this.vocab = vocab;
   },
   methods: {
-    upgrade() {
-      console.log('upgrade')
-    },
     showConfirm() {
       this.show_confirm = true;
     },
