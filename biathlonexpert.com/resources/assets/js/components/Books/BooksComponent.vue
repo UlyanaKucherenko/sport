@@ -30,13 +30,6 @@
         </div>
       </div>
 
-      <!--                    <RecentBooks-->
-      <!--                            v-if="showRecent"-->
-      <!--                            :title="this.vocab[this.locale].title"-->
-      <!--                            :recent-books="newDownloads"-->
-      <!--                            :downloading="downloading"-->
-      <!--                    ></RecentBooks>-->
-
     </div>
     <popup-success
         msgText="Download limit reached"

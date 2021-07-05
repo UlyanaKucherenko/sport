@@ -26,7 +26,7 @@
             <div class="menu-profile__info">
               <div class="menu-profile__weather">
                 <img :src="'http://openweathermap.org/img/w/' + iconWeather + '.png' "/>
-                <span class="text"> {{ temperatureInCelsius(this.temp) }}&deg;</span>
+                <span class="text"> {{ temp }}&deg;</span>
               </div>
               <div class="menu-profile__time">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@
                         d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0ZM16.2756 14.1189L12.9294 11.6092V6.49691C12.9294 5.98288 12.5139 5.56738 11.9998 5.56738C11.4858 5.56738 11.0703 5.98288 11.0703 6.49691V12.074C11.0703 12.3668 11.2079 12.6429 11.4421 12.8176L15.1602 15.6062C15.3275 15.7317 15.5227 15.7921 15.7169 15.7921C16.0004 15.7921 16.2793 15.6647 16.4615 15.4193C16.7702 15.0094 16.6865 14.4266 16.2756 14.1189Z"
                         fill="#F0F0F0"/>
                 </svg>
-                <span>{{ this.time }}</span>
+                <span>{{ time }}</span>
               </div>
             </div>
 
@@ -94,11 +94,9 @@ export default {
     await fetch('https://api.openweathermap.org/data/2.5/weather?q=Zaporizhzhia&units=metric&appid=feb027b3faea87405a0cd6954a7dea30')
         .then(response => response.json())
         .then(json => this.info = json)
-    this.temp = this.info.wind.deg
+    this.temp = this.info.main.temp
     this.iconWeather = this.info.weather[0].icon
-    console.log('info=>', this.info)
-    console.log('weather=>', this.iconWeather)
-    console.log('temp=>', this.temp)
+    console.log('temp=>', this.info)
 
   },
   created() {
@@ -134,7 +132,7 @@ export default {
       this.time = new Date().toLocaleTimeString('uk-UA', {hour: 'numeric', minute: 'numeric'});
     },
     temperatureInCelsius(temp) {
-      return Math.round(((temp + 32 ) * 9/5) - 273);
+      return Math.round(temp);
     },
   }
 

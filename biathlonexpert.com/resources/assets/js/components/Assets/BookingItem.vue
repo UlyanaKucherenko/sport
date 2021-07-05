@@ -6,6 +6,7 @@
     import moment from 'moment';
     import {mapState, mapMutations, mapActions} from 'vuex';
 
+
     export default {
         name: "BookingItem",
         props: {
