@@ -16,10 +16,18 @@
           <span class="my-plan__number">{{ planName }}</span>
         </div>
       </div>
-      <a href="/member_area/manage" class="my-plan__btn" v-if="btnName === 'Upgrade'">
+      <a
+        v-if="btnName === 'Upgrade'"
+        class="member-btn"
+        href="/member_area/manage"
+      >
         {{ btnName }}
       </a>
-      <a @click="showConfirm" class="my-plan__btn my-plan__btn--reverse" v-else>
+      <a
+        v-else
+        @click="showConfirm"
+        class="member-btn member-btn--reverse"
+      >
         {{ btnName }}
       </a>
     </div>
@@ -147,37 +155,36 @@ export default {
     text-align: right;
   }
 
-  &__btn {
-    display: block;
-    font-size: 20px;
-    font-weight: 600;
-    padding: 15px 52px 14px;
-    color: #fff;
-    background: var(--color-member-area);
-    border: 2px solid var(--color-member-area);
-    border-radius: 8px;
-    box-shadow: 0 4px 23px rgba(var(--color-member-area), 0.5);
-    cursor: pointer;
-
-    &:hover {
-      border: 2px solid white;
-      background-color: transparent;
-      transition: all 0.3s ease-out;
-    }
-
-    &--reverse {
-      color: var(--color-member-area);
-      background: transparent;
-      border: 2px solid var(--color-member-area);
-
-      &:hover {
-        color: #fff;
-        background: var(--color-member-area);
-        border: 2px solid var(--color-member-area);
-      }
-    }
-  }
-
+  //&__btn {
+  //  display: block;
+  //  font-size: 20px;
+  //  font-weight: 600;
+  //  padding: 15px 52px 14px;
+  //  color: #fff;
+  //  background: var(--color-member-area);
+  //  border: 2px solid var(--color-member-area);
+  //  border-radius: 8px;
+  //  box-shadow: 0 4px 23px rgba(var(--color-member-area), 0.5);
+  //  cursor: pointer;
+  //
+  //  &:hover {
+  //    border: 2px solid white;
+  //    background-color: transparent;
+  //    transition: all 0.3s ease-out;
+  //  }
+  //
+  //  &--reverse {
+  //    color: var(--color-member-area);
+  //    background: transparent;
+  //    border: 2px solid var(--color-member-area);
+  //
+  //    &:hover {
+  //      color: #fff;
+  //      background: var(--color-member-area);
+  //      border: 2px solid var(--color-member-area);
+  //    }
+  //  }
+  //}
 }
 
 </style>

@@ -26,7 +26,7 @@
             <div class="menu-profile__info">
               <div class="menu-profile__weather">
                 <img :src="'http://openweathermap.org/img/w/' + iconWeather + '.png' "/>
-                <span class="text"> {{ temperatureInCelsius(this.temp) }}&deg;</span>
+                <span class="text"> {{ this.temp }}&deg;</span>
               </div>
               <div class="menu-profile__time">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,6 +65,7 @@
 <script>
 
 import vocab from '../../translates/member_area/menu_members';
+import {api} from '../../api';
 
 export default {
   name: "MenuMembersComponent",
@@ -91,15 +92,9 @@ export default {
     }
   },
   async mounted() {
-    await fetch('https://api.openweathermap.org/data/2.5/weather?q=Zaporizhzhia&units=metric&appid=feb027b3faea87405a0cd6954a7dea30')
-        .then(response => response.json())
-        .then(json => this.info = json)
-    this.temp = this.info.wind.deg
-    this.iconWeather = this.info.weather[0].icon
-    console.log('info=>', this.info)
-    console.log('weather=>', this.iconWeather)
-    console.log('temp=>', this.temp)
-
+    const weatherRes = await api.getWeather()
+    this.temp = weatherRes.main.temp
+    this.iconWeather = weatherRes.weather[0].icon
   },
   created() {
     setInterval(() => {

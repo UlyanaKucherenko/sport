@@ -16,7 +16,7 @@
     transition: all 0.3s ease-out;
   }
 
-  &--reversed {
+  &--reverse {
     color: var(--color-member-area);
     background: transparent;
     border: 2px solid var(--color-member-area);
@@ -27,5 +27,4 @@
       border: 2px solid var(--color-member-area);
     }
   }
-
 }

@@ -89,7 +89,7 @@ export default {
   data() {
     return {
       vocab: {},
-      currentPlan: 'Beginner',
+      currentPlan: this.user.plan_id - 1,
       // plans: ['Beginner', 'Basic', 'Pro'],
       showSelectPlan: false,
       modalError: false,
@@ -110,7 +110,6 @@ export default {
   },
   created() {
     this.vocab = vocab;
-    this.currentPlan = this.user.plan_id - 1;
     console.log(this.unsubscribeErrors);
     if (this.unsubscribeErrors.length > 2) {
       this.showPopup(this.unsubscribeErrors, "error");
@@ -124,7 +123,6 @@ export default {
     planName() {
       return this.plans[this.currentPlan].slug;
     }
-
   },
   mounted() {
     this.forWeek = this.vocab[this.locale].week;

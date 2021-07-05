@@ -6,7 +6,7 @@
           :expirationData="expirationData"
           :totalBooks="totalBooks"
           :availableBooks="availableBooks"
-          :planName="planName"
+          :planName="plan.slug"
           btnName="Upgrade"
       />
 
@@ -29,13 +29,6 @@
           </div>
         </div>
       </div>
-
-      <!--                    <RecentBooks-->
-      <!--                            v-if="showRecent"-->
-      <!--                            :title="this.vocab[this.locale].title"-->
-      <!--                            :recent-books="newDownloads"-->
-      <!--                            :downloading="downloading"-->
-      <!--                    ></RecentBooks>-->
 
     </div>
     <popup-success
@@ -85,14 +78,11 @@ export default {
       type: String,
       require: true
     },
-    planTexts: {},
-    plans: {},
   },
   components: {MyPlan, RecentBooks},
   data() {
     return {
       vocab: {},
-      books_data: {},
       books: [],
       currentPage: null,
       first_page_url: null,
@@ -108,13 +98,15 @@ export default {
       newDownloads: [],
       showPopup: false,
       showRecent: true,
-      downloadedBooks: 0,
+      downloadedBooks: 0
     }
   },
   created() {
+
     this.vocab = vocab;
     this.newDownloads = [...this.recentBooks];
     this.downloadedBooks = this.availableBooks;
+
     (
         {
           data: this.books,
@@ -137,20 +129,9 @@ export default {
 
     this.downloadBooks();
   },
-
   methods: {
     linkGen(pageNum) {
       return '?page=' + pageNum
-    },
-    downloadBooks() {
-      window.onscroll = () => {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-          console.log(true);
-          // axios
-        } else {
-          console.log(false);
-        }
-      }
     },
     handleClick(book) {
       if (!this.newDownloads.find(function (element, index, array) { //finding similar elements in slider

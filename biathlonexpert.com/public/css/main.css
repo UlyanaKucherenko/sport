@@ -2615,13 +2615,13 @@ a:hover {
   transition: all 0.3s ease-out;
 }
 
-.member-btn--reversed {
+.member-btn--reverse {
   color: var(--color-member-area);
   background: transparent;
   border: 2px solid var(--color-member-area);
 }
 
-.member-btn--reversed:hover {
+.member-btn--reverse:hover {
   color: #fff;
   background: var(--color-member-area);
   border: 2px solid var(--color-member-area);
