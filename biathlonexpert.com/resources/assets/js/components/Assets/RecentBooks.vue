@@ -98,29 +98,114 @@ export default {
 </script>
 <style lang="scss">
 .RecentBooks {
-  .slide-item {
-    background-color: #0db56f;
-  }
 
-  .slick-slide {
-    background-color: #0db56f;
-  }
 }
 
-.slide-item:not(.slick_current) { opacity:.5; }
-
-.slick-wrapper {
+.dash-slider {
+  width: 100%;
+  min-height: 360px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
   position: relative;
 
-  &__overlay {
+  &__icon {
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: calc(100% / 6 - 27px);
-    z-index: 1;
-    background: rgba(0, 0, 0, .6);
-    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+    bottom: 60px;
+    right: 0;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--color-member-area);
+  }
+
+  &__slide {
+    display: inline !important;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    min-height: 160px;
+    position: relative;
+    margin: 15px auto 10px;
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 400px;
+      max-height: 130px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__author {
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #fff;
+    text-align: center;
+  }
+
+  &__prev {
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 20px);
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border: none;
+      border-top: 2px solid #898888;
+      border-left: 2px solid #898888;
+      transform: rotate(-45deg);
+    }
+
+    &:hover:before {
+      border-color: var(--color-member-area);
+      filter: drop-shadow(0 3px 11px rgba(var(--color-member-area), 0.5));
+    }
+  }
+
+  &__next {
+    position: absolute;
+    bottom: -40px;
+    right: calc(50% - 20px);
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border: none;
+      border-top: 2px solid #898888;
+      border-right: 2px solid #898888;
+      transform: rotate(45deg);
+    }
+
+    &:hover:before {
+      border-color: var(--color-member-area);
+      filter: drop-shadow(0 3px 11px rgba(var(--color-member-area), 0.5));
+    }
   }
 }
 </style>
