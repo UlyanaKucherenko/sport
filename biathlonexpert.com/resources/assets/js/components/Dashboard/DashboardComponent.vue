@@ -12,7 +12,7 @@
     </div>
     <div class="dash-block">
       <RecentBooks
-        :title="this.vocab[this.locale].books"
+        :title="vocab.books"
         :recent-books="recentBooks"
       ></RecentBooks>
     </div>
@@ -60,63 +60,14 @@ export default {
   data() {
     return {
       info: null,
-      vocab: {},
-      sliderBooks: [
-        {
-          src: '/img/book1.png',
-          desc: 'Before You Deliver'
-        },
-        {
-          src: '/img/book2.png',
-          desc: 'The Impatient Woman\'s Guide to Getting Pregnant'
-        },
-        {
-          src: '/img/book3.png',
-          desc: 'Mom Life: A Snarky Adult Coloring Book'
-        },
-        {
-          src: '/img/book1.png',
-          desc: 'Before You Deliver'
-        },
-        {
-          src: '/img/book2.png',
-          desc: 'The Impatient Woman\'s Guide to Getting Pregnant'
-        },
-        {
-          src: '/img/book3.png',
-          desc: 'Mom Life: A Snarky Adult Coloring Book'
-        }
-      ],
+      vocab: vocab[this.locale],
+      planName: this.plans[this.user.plan_id - 1].slug,
       btnUpgrade: "Upgrade",
-
     }
   },
   mounted() {
-    this.btnUpgrade = this.vocab[this.locale].upgrade;
+    this.btnUpgrade = this.vocab.upgrade;
   },
-
-  computed: {
-    planName() {
-      return this.plans[this.currentPlan].slug;
-    },
-    },
-  created() {
-    this.vocab = vocab;
-    this.currentPlan = this.user.plan_id - 1;
-  },
-  methods: {
-    next() {
-      this.$refs.slick.next();
-    },
-    prev() {
-      this.$refs.slick.prev();
-    },
-    reInit() {
-      this.$nextTick(() => {
-        this.$refs.slick.reSlick();
-      });
-    },
-  }
 }
 </script>
 
