@@ -9,16 +9,16 @@
         <div class="wrapMenu" :class="{'wrapMenuOpen': menuOpen}">
           <ul class="menuList">
             <li><a :href="routes.dashboard" class="menuList__link" :class="{active:textSlideDashboard}">
-              <div class="text-slide__text">{{ this.vocab[this.locale].dashboard }}</div>
+              <div class="text-slide__text">{{ vocab.dashboard }}</div>
             </a></li>
             <li><a :href="routes.indexBook" class="menuList__link" :class="{active:textSlideIndexBook}">
-              <div class="text-slide__text">{{ this.vocab[this.locale].ebooks }}</div>
+              <div class="text-slide__text">{{ vocab.ebooks }}</div>
             </a></li>
             <li><a :href="routes.manage" class="menuList__link" :class="{active:textSlideManage}">
-              <div class="text-slide__text" v-html="this.vocab[this.locale].manage"></div>
+              <div class="text-slide__text" v-html="vocab.manage"></div>
             </a></li>
             <li><a :href="routes.logout" class="menuList__link">
-              <div class="text-slide__text" v-html="this.vocab[this.locale].logout"></div>
+              <div class="text-slide__text" v-html="vocab.logout"></div>
             </a></li>
           </ul>
 
@@ -26,7 +26,7 @@
             <div class="menu-profile__info">
               <div class="menu-profile__weather">
                 <img :src="'http://openweathermap.org/img/w/' + iconWeather + '.png' "/>
-                <span class="text"> {{ temp }}&deg;</span>
+                <span class="text"> {{ Math.round(temp) }}&deg;</span>
               </div>
               <div class="menu-profile__time">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +84,7 @@ export default {
   data() {
     return {
       menuOpen: false,
-      vocab: {},
+      vocab: vocab[this.locale],
       time: '',
       info: 0,
       temp: 0,
@@ -100,13 +100,8 @@ export default {
     setInterval(() => {
       this.getTime();
     }, 0)
-    this.vocab = vocab;
   },
   computed: {
-    date() {
-      //TODO make date like July, 14th of 2018
-      return new Date().toLocaleDateString();
-    },
     textSlideDashboard() {
       return window.location == this.routes.dashboard;
     },
@@ -119,20 +114,13 @@ export default {
     textSlideProfile() {
       return window.location == this.routes.profile;
     },
-    textSlideCoach() {
-      return window.location == this.routes.coach;
-    },
 
   },
   methods: {
     getTime() {
       this.time = new Date().toLocaleTimeString('uk-UA', {hour: 'numeric', minute: 'numeric'});
-    },
-    temperatureInCelsius(temp) {
-      return Math.round(temp);
-    },
+    }
   }
-
 }
 </script>
 

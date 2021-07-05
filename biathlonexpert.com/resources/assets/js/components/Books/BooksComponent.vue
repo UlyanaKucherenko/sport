@@ -6,17 +6,20 @@
           :expirationData="expirationData"
           :totalBooks="totalBooks"
           :availableBooks="availableBooks"
-          :planName="plan.slug"
+          :planName="planName"
           btnName="Upgrade"
       />
 
-      <div class="row">
+      <div class="member-books__row">
+        <div class="member-books__title">
+          Recently downloaded books
+        </div>
         <div class="pagination">
           <b-pagination-nav :link-gen="linkGen" :number-of-pages="last_page" v-model="currentPage"/>
         </div>
       </div>
 
-      <div class="row">
+      <div class="member-books__row">
         <div class="books-container">
           <div class="books-container__item" v-for="book in books" :key="book.id">
             <div class="books-container__img">
@@ -78,11 +81,18 @@ export default {
       type: String,
       require: true
     },
+    planTexts: {},
+    plans: {},
+    planName: {
+      type: String,
+      require: true
+    },
   },
   components: {MyPlan, RecentBooks},
   data() {
     return {
-      vocab: {},
+      vocab: vocab[this.locale],
+      books_data: {},
       books: [],
       currentPage: null,
       first_page_url: null,
@@ -98,15 +108,15 @@ export default {
       newDownloads: [],
       showPopup: false,
       showRecent: true,
-      downloadedBooks: 0
+      downloadedBooks: 0,
     }
   },
+  mounted(){
+    console.log('planTexts', this.planTexts)
+  },
   created() {
-
-    this.vocab = vocab;
     this.newDownloads = [...this.recentBooks];
     this.downloadedBooks = this.availableBooks;
-
     (
         {
           data: this.books,
@@ -127,11 +137,23 @@ export default {
       this.showPopup = 1;
     }
 
+    console.log('111=>', this.planTexts)
     this.downloadBooks();
   },
+
   methods: {
     linkGen(pageNum) {
       return '?page=' + pageNum
+    },
+    downloadBooks() {
+      window.onscroll = () => {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+          console.log(true);
+          // axios
+        } else {
+          console.log(false);
+        }
+      }
     },
     handleClick(book) {
       if (!this.newDownloads.find(function (element, index, array) { //finding similar elements in slider

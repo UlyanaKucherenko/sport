@@ -1,7 +1,7 @@
 <template>
   <section class="member-profile">
     <div class="container">
-      <div class="member-profile__title">{{ this.vocab[this.locale].tab1 }}</div>
+      <div class="member-profile__title">{{ this.vocab.tab1 }}</div>
       <personal-form
           v-if="activeTab"
           :user="user"
@@ -9,13 +9,6 @@
           :routes="routes"
           :locale="locale"
       ></personal-form>
-      <!--                <body-form-->
-      <!--                        v-else-->
-      <!--                        :user="user"-->
-      <!--                        :data="data"-->
-      <!--                        :routes="routes"-->
-      <!--                        :locale="locale"-->
-      <!--                ></body-form>-->
     </div>
   </section>
 </template>
@@ -55,11 +48,8 @@ export default {
   data() {
     return {
       activeTab: true,
-      vocab: {}
+      vocab: vocab[this.locale],
     }
-  },
-  created() {
-    this.vocab = vocab;
   },
 
 }

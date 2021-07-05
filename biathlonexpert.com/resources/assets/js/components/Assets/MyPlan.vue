@@ -80,12 +80,9 @@ export default {
   },
   data() {
     return {
-      vocab: {},
+      vocab: vocab[this.locale],
       show_confirm: false,
     }
-  },
-  created() {
-    this.vocab = vocab;
   },
   methods: {
     showConfirm() {

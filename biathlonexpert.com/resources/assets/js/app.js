@@ -55,10 +55,10 @@ Vue.component('select_plan-page', require('./components/SelectPlan/SelectPlanCom
 Vue.component('menu-members', require('./components/Layout/MenuMembersComponent').default);
 Vue.component('dashboard-page', require('./components/Dashboard/DashboardComponent').default);
 
-Vue.component('trainings', require('./components/Coach/Trainings').default);
 Vue.component('books-page', require('./components/Books/BooksComponent').default);
 Vue.component('profile-page', require('./components/Profile/ProfileComponent').default);
-Vue.component('subscription-page', require('./components/Subscription/SubscriptionComponent').default);
+
+Vue.component('membership-page', require('./components/Membership/MembershipComponent').default);
 Vue.component('footer-section', require('./components/Layout/FooterComponent').default);
 
 

@@ -10,7 +10,7 @@
           :planName="planName"
           btnName="Unsubscribe"
       />
-      <div class="member-manage__subtitle member-title">Available plans</div>
+      <div class="member-manage__subtitle">Available plans</div>
       <div class="member-manage__plans" v-if="currentPlan<2">
         <div class="member-manage__plan" v-for="(text, index) in planTexts" v-if="currentPlan <index+1">
           <div class="member-manage__plan-title">{{text.title}}</div>
@@ -52,7 +52,7 @@ import confirm from '../Popup/PopupConfirm';
 import MyPlan from "../Assets/MyPlan";
 
 export default {
-  name: "SubscriptionComponent",
+  name: "MembershipComponent",
   components: {MyPlan, confirm},
   props: {
     totalBooks: {
@@ -88,7 +88,7 @@ export default {
   },
   data() {
     return {
-      vocab: {},
+      vocab: vocab[this.locale],
       currentPlan: this.user.plan_id - 1,
       // plans: ['Beginner', 'Basic', 'Pro'],
       showSelectPlan: false,
@@ -109,7 +109,6 @@ export default {
     }
   },
   created() {
-    this.vocab = vocab;
     console.log(this.unsubscribeErrors);
     if (this.unsubscribeErrors.length > 2) {
       this.showPopup(this.unsubscribeErrors, "error");
@@ -125,9 +124,6 @@ export default {
     }
   },
   mounted() {
-    this.forWeek = this.vocab[this.locale].week;
-    this.forMonth = this.vocab[this.locale].month;
-    this.btnUpgrade = this.vocab[this.locale].upgrade;
   },
   methods: {
     async detectIframeEvent(e) {

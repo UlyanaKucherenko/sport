@@ -24,8 +24,6 @@
 import vocab from '../../translates/member_area/dashboard';
 import RecentBooks from '../Assets/RecentBooks'
 import MyPlan from "../Assets/MyPlan";
-import XButton from "../common/XButton";
-
 
 export default {
   name: "DashboardComponent",
@@ -56,7 +54,7 @@ export default {
     plans: {},
     user: {},
   },
-  components: {XButton, MyPlan, RecentBooks},
+  components: { MyPlan, RecentBooks},
   data() {
     return {
       info: null,
