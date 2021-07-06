@@ -1606,22 +1606,26 @@ a:hover {
   width: 100%;
   min-height: 390px;
   padding: 20px 0;
-  margin-bottom: 30px;
   color: #FFFFFF;
   border-radius: 10px;
 }
 
 .member-dashboard .dash-slider__title {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
 .member-dashboard .dash-slider__slide {
   display: block !important;
+  position: relative;
   max-width: 256px;
   margin: 0 auto;
   z-index: 0;
+}
+
+.member-dashboard .dash-slider__slide:hover .dash-slider__btn img {
+  display: block;
 }
 
 .member-dashboard .dash-slider__img {
@@ -1652,6 +1656,20 @@ a:hover {
   font-weight: 600;
   margin-top: 10px;
   text-align: center;
+  min-height: 40px;
+}
+
+.member-dashboard .dash-slider__btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  width: 54px;
+  height: 54px;
+}
+
+.member-dashboard .dash-slider__btn img {
+  display: none;
 }
 
 .member-dashboard .dash-slider__prev {
@@ -1727,10 +1745,9 @@ a:hover {
     flex-direction: column;
   }
 
-  .member-dashboard .dash-block__title {
+  .member-dashboard .dash-block .dash-slider__title {
     font-size: 24px;
     text-align: center;
-    margin-bottom: 15px;
   }
 }
 
@@ -1749,14 +1766,26 @@ a:hover {
 
 .member-books__row {
   display: flex;
+}
+
+.member-books__wrap-pagination {
+  display: grid;
   align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 800px) {
+  .member-books__wrap-pagination {
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+  }
 }
 
 .member-books .books-container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 40px 0 0 0;
+  padding: 18px 0 0 0;
 }
 
 .member-books .books-container__item {
@@ -2096,19 +2125,20 @@ a:hover {
 }
 
 .member-btn:hover {
+  color: #fff;
   border: 2px solid white;
   background-color: transparent;
   transition: all 0.3s ease-out;
 }
 
 .member-btn--reverse {
-  color: var(--color-member-area);
+  color: var(--color-member-area) !important;
   background: transparent;
   border: 2px solid var(--color-member-area);
 }
 
 .member-btn--reverse:hover {
-  color: #fff;
+  color: #fff !important;
   background: var(--color-member-area);
   border: 2px solid var(--color-member-area);
 }

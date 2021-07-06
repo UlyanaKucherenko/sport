@@ -17,21 +17,27 @@
     width: 100%;
     min-height: 390px;
     padding: 20px 0;
-    margin-bottom: 30px;
     color: #FFFFFF;
     border-radius: 10px;
 
     &__title {
-      font-size: 30px;
+      font-size: 34px;
       font-weight: 600;
       margin-bottom: 20px;
     }
 
     &__slide {
       display: block !important;
+      position: relative;
       max-width: 256px;
       margin: 0 auto;
       z-index: 0;
+
+      &:hover {
+        .dash-slider__btn img {
+          display: block;
+        }
+      }
     }
 
     &__img {
@@ -60,6 +66,19 @@
       font-weight: 600;
       margin-top: 10px;
       text-align: center;
+      min-height: 40px;
+    }
+
+    &__btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      width: 54px;
+      height: 54px;
+      img {
+        display: none;
+      }
     }
 
     &__prev {
@@ -138,12 +157,13 @@
       justify-content: center;
       flex-direction: column;
 
-      &__title {
-        font-size: 24px;
-        text-align: center;
-        margin-bottom: 15px;
+      .dash-slider {
+
+        &__title {
+          font-size: 24px;
+          text-align: center;
+        }
       }
     }
-
   }
 }

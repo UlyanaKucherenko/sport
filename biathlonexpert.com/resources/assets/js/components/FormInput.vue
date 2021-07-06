@@ -1,13 +1,5 @@
 <template>
   <label class="form-field">
-    <!--    <span-->
-    <!--      v-if="title"-->
-    <!--      class="form-field__title"-->
-    <!--      :class="{'form-field__title&#45;&#45;reversed': reversed}"-->
-    <!--    >-->
-    <!--      {{ title }}-->
-    <!--    </span>-->
-
     <textarea
       v-if="rows"
       class="form-field__input"
@@ -90,16 +82,6 @@ export default {
     color: #ff5f5f;
     font-size: 14px;
   }
-
-  //&__title {
-  //  display: block;
-  //  font-size: 14px;
-  //  margin-bottom: 5px;
-  //
-  //  &--reversed {
-  //    color: black;
-  //  }
-  //}
 
   &__input {
     width: 100%;

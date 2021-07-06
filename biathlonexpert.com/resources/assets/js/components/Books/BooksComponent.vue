@@ -6,14 +6,12 @@
           :expirationData="expirationData"
           :totalBooks="totalBooks"
           :availableBooks="availableBooks"
-          :planName="planName"
+          :planName="plan.slug"
           btnName="Upgrade"
       />
 
-      <div class="member-books__row">
-        <div class="member-books__title">
-          Recently downloaded books
-        </div>
+      <div class="member-books__wrap-pagination">
+        <div class="member-books__title">Recently downloaded books</div>
         <div class="pagination">
           <b-pagination-nav :link-gen="linkGen" :number-of-pages="last_page" v-model="currentPage"/>
         </div>
@@ -111,12 +109,11 @@ export default {
       downloadedBooks: 0,
     }
   },
-  mounted(){
-    console.log('planTexts', this.planTexts)
-  },
+
   created() {
     this.newDownloads = [...this.recentBooks];
     this.downloadedBooks = this.availableBooks;
+
     (
         {
           data: this.books,
@@ -132,12 +129,12 @@ export default {
           total: this.total,
         } = this.props_books_data
     );
+    console.log('data',this.books)
+    console.log('last_page',this.props_books_data.last_page)
 
     if (this.downloadErrors.length > 2) {
       this.showPopup = 1;
     }
-
-    console.log('111=>', this.planTexts)
     this.downloadBooks();
   },
 
@@ -156,6 +153,7 @@ export default {
       }
     },
     handleClick(book) {
+      console.log('book', book)
       if (!this.newDownloads.find(function (element, index, array) { //finding similar elements in slider
         if (element.book.id === book.id) {
           return true;

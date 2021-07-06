@@ -1,5 +1,6 @@
 export default {
     "en": {
+        title: "Available plans",
         membership: "Membership:",
         subscription: "End of Subscription:",
         available: "Available e-books:",
@@ -9,6 +10,7 @@ export default {
         week: "for a week",
     },
     "it": {
+        title: "Piani disponibili",
         membership: "Abbonamento:",
         subscription: "Fine dell'abbonamento:",
         available: "Ebook disponibili:",
@@ -18,6 +20,7 @@ export default {
         week: "per una settimana",
     },
     "fr": {
+        title: "Forfaits disponibles",
         membership: "Adhésion:",
         subscription: "Fin de l'abonnement:",
         available: "Ebooks disponibles:",

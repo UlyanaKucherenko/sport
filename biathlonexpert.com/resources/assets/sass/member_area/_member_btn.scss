@@ -12,20 +12,22 @@
   width: fit-content;
 
   &:hover {
+    color: #fff;
     border: 2px solid white;
     background-color: transparent;
     transition: all 0.3s ease-out;
   }
 
   &--reverse {
-    color: var(--color-member-area);
+    color: var(--color-member-area) !important;
     background: transparent;
     border: 2px solid var(--color-member-area);
 
     &:hover {
-      color: #fff;
+      color: #fff !important;
       background: var(--color-member-area);
       border: 2px solid var(--color-member-area);
     }
   }
+
 }

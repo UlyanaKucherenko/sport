@@ -1,7 +1,7 @@
 <template>
   <div class="my-plan">
     <div class="my-plan__container">
-      <div class="my-plan__title">My plan</div>
+      <div class="my-plan__title">My Plan</div>
       <div class="my-plan__content">
         <div class="my-plan__content-col">
           <span class="my-plan__text">Available Books:</span>
@@ -17,24 +17,24 @@
         </div>
       </div>
       <a
-        v-if="btnName === 'Upgrade'"
-        class="member-btn"
-        href="/member_area/manage"
+          v-if="btnName === 'Upgrade'"
+          class="member-btn"
+          href="/member_area/manage"
       >
         {{ btnName }}
       </a>
       <a
-        v-else
-        @click="showConfirm"
-        class="member-btn member-btn--reverse"
+          v-else
+          @click="showConfirm"
+          class="member-btn member-btn--reverse"
       >
         {{ btnName }}
       </a>
     </div>
 
     <confirm
-      :show-confirm="show_confirm"
-      @closeConfirm="closeConfirm"
+        :show-confirm="show_confirm"
+        @closeConfirm="closeConfirm"
     ></confirm>
 
   </div>
@@ -151,37 +151,25 @@ export default {
     color: var(--color-member-area);
     text-align: right;
   }
-
-  //&__btn {
-  //  display: block;
-  //  font-size: 20px;
-  //  font-weight: 600;
-  //  padding: 15px 52px 14px;
-  //  color: #fff;
-  //  background: var(--color-member-area);
-  //  border: 2px solid var(--color-member-area);
-  //  border-radius: 8px;
-  //  box-shadow: 0 4px 23px rgba(var(--color-member-area), 0.5);
-  //  cursor: pointer;
-  //
-  //  &:hover {
-  //    border: 2px solid white;
-  //    background-color: transparent;
-  //    transition: all 0.3s ease-out;
-  //  }
-  //
-  //  &--reverse {
-  //    color: var(--color-member-area);
-  //    background: transparent;
-  //    border: 2px solid var(--color-member-area);
-  //
-  //    &:hover {
-  //      color: #fff;
-  //      background: var(--color-member-area);
-  //      border: 2px solid var(--color-member-area);
-  //    }
-  //  }
-  //}
 }
+
+@media screen and (max-width: 400px) {
+  .my-plan {
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__title,
+    &__text {
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+}
+
 
 </style>

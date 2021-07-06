@@ -5,17 +5,23 @@
     </div>
     <div class="slick-wrapper">
       <div class="slick-wrapper__overlay" />
+      <div class="slick-wrapper__overlay-right" />
       <slick ref="slick" :options="slickOptions" v-if="showSlider" class="dash-slider__slick">
         <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
-          <div class="dash-slider__img"><img :src="`/storage/${slide.book.img}`" alt=""></div>
+          <div class="dash-slider__img"><img :src="`/storage/${slide.book.img}`" alt="">
+            <a class="dash-slider__btn" :href="`books/${slide.book.id}`" @mousedown="handleClick(book)">
+              <img src="/img/errow-download.svg"/>
+            </a>
+          </div>
           <div class="dash-slider__text">{{ slide.book.title }}</div>
-          <div class="dash-slider__text">{{ slide.book.author }}</div>
+<!--          <a class="dash-slider__btn" :href="`books/${slide.book.id}`" @mousedown="handleClick(book)">-->
+<!--            <img src="/img/errow-download.svg"/>-->
+<!--          </a>-->
         </div>
         <!---->
         <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
           <div class="dash-slider__img"><img :src="`/storage/${slide.book.img}`" alt=""></div>
           <div class="dash-slider__text">{{ slide.book.title }}</div>
-          <div class="dash-slider__text">{{ slide.book.author }}</div>
         </div>
         <!---->
       </slick>
@@ -51,13 +57,13 @@ export default {
           {
             breakpoint: 1201,
             settings: {
-              slidesToShow: 4
+              slidesToShow: 5
             }
           },
           {
             breakpoint: 767,
             settings: {
-              slidesToShow: 2
+              slidesToShow: 3
             }
           },
           {
@@ -65,14 +71,12 @@ export default {
             settings: {
               slidesToShow: 1
             }
-          }]
+          },
+        ]
       },
     }
   },
   computed: {
-    len() {
-      return this.recentBooks.length;
-    }
   },
   methods: {
     next() {
@@ -110,6 +114,25 @@ export default {
     z-index: 1;
     background: rgba(0, 0, 0, .6);
     -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+
+
+    @media screen and (max-width: 320px) {
+      display: none;
+    }
+  }
+  &__overlay-right {
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    width: calc(100% / 6 - 27px);
+    z-index: 1;
+    background: rgba(0, 0, 0, .6);
+    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+    @media screen and (max-width: 320px) {
+      display: none;
+    }
   }
 }
 </style>

@@ -10,9 +10,9 @@
           :planName="planName"
           btnName="Unsubscribe"
       />
-      <div class="member-manage__subtitle">Available plans</div>
-      <div class="member-manage__plans" v-if="currentPlan<2">
-        <div class="member-manage__plan" v-for="(text, index) in planTexts" v-if="currentPlan <index+1">
+      <div class="member-manage__subtitle">{{vocab.title}}</div>
+      <div class="member-manage__plans" v-if="currentPlan < 2">
+        <div class="member-manage__plan" v-for="(text, index) in planTexts" v-if="currentPlan < index">
           <div class="member-manage__plan-title">{{text.title}}</div>
           <div class="member-manage__plan-price">{{plans[index].price}} €</div>
           <div class="member-manage__plan-text">
@@ -101,8 +101,6 @@ export default {
       popup_text: 'error',
       show_confirm: false,
       upgradingToPLan: 0,
-      forWeek: "for a week",
-      forMonth: "For month",
       btnUpgrade: "Upgrade",
       descriptor: "https://lmarkbill.com",
 
@@ -138,7 +136,7 @@ export default {
           case (status === "ok" && action === "payment_success"):
 
             this.closeIframeHandel();
-            //console.log('e=',e.data);
+            // console.log('e=',e.data);
             const makePayment = await axios({
               method: 'post',
               data: {
@@ -205,14 +203,13 @@ export default {
 
       cardIframeSection.appendChild(cardIframe);
     },
+
     upgrade(toPlan) {
 
       if (this.user) {
         this.upgradingToPLan = toPlan;
         this.createdIframe(this.user, toPlan);
       }
-
-
     },
     showPopup(text, type) {
       this.popup_text = text;

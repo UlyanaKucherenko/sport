@@ -8,18 +8,28 @@
     line-height: 135%;
     color: #FFFFFF;
     text-align: left;
-  }
 
+  }
   &__row {
     display: flex;
+  }
+
+  &__wrap-pagination {
+    display: grid;
     align-items: center;
+    grid-template-columns: 1fr 1fr;
+    @media screen and (max-width: 800px) {
+      grid-template-columns: 1fr;
+      grid-row-gap: 10px ;
+    }
+
   }
 
   .books-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 40px 0 0 0;
+    padding: 18px 0 0 0;
 
     &__item {
       position: relative;
