@@ -6,7 +6,7 @@
           :expirationData="expirationData"
           :totalBooks="totalBooks"
           :availableBooks="availableBooks"
-          :planName="planName"
+          :planName="plan.slug"
           btnName="Upgrade"
       />
 
@@ -110,9 +110,6 @@ export default {
       showRecent: true,
       downloadedBooks: 0,
     }
-  },
-  mounted(){
-    console.log('planTexts', this.planTexts)
   },
   created() {
     this.newDownloads = [...this.recentBooks];

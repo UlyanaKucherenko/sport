@@ -5,6 +5,7 @@
     </div>
     <div class="slick-wrapper">
       <div class="slick-wrapper__overlay" />
+      <div class="slick-wrapper__overlay slick-wrapper__overlay--reversed" />
       <slick ref="slick" :options="slickOptions" v-if="showSlider" class="dash-slider__slick">
         <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
           <div class="dash-slider__img"><img :src="`/storage/${slide.book.img}`" alt=""></div>
@@ -108,8 +109,14 @@ export default {
     bottom: 0;
     width: calc(100% / 6 - 27px);
     z-index: 1;
-    background: rgba(0, 0, 0, .6);
+    background: #1D1D1D;
     -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+
+    &--reversed {
+      left: auto;
+      right: 0;
+      -webkit-mask-image: -webkit-gradient(linear, right top, left top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+    }
   }
 }
 </style>
