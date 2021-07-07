@@ -10,13 +10,8 @@
           :planName="planName"
           btnName="Unsubscribe"
       />
-<<<<<<< HEAD
-      <div class="member-manage__subtitle">{{vocab.title}}</div>
-      <div class="member-manage__plans" v-if="currentPlan < 2">
-=======
-      <div class="member-manage__subtitle">Available plans</div>
+      <div class="member-manage__subtitle member-title">{{vocab.title}}</div>
       <div class="member-manage__plans" v-if="currentPlan<2">
->>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
         <div class="member-manage__plan" v-for="(text, index) in planTexts" v-if="currentPlan < index">
           <div class="member-manage__plan-title">{{text.title}}</div>
           <div class="member-manage__plan-price">{{plans[index].price}} €</div>
@@ -27,7 +22,7 @@
           <button @click="upgrade(index+1)" class="member-manage__plan-btn member-btn">{{ btnUpgrade }}</button>
         </div>
       </div>
-
+      <div class="member-manage__text" v-else >{{vocab.text}} {{ planName }}</div>
       <transition name="modal-error">
         <div class="modal-error" v-if="modalError">
           <div class="modal-error__text">{{ modalErrorText }}</div>

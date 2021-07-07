@@ -74,7 +74,7 @@
         &:hover {
           color: var(--color-member-area);
           path {
-            fill: red;
+            fill: var(--color-member-area);
           }
         }
       }
@@ -85,8 +85,8 @@
 
       &__photo {
         position: relative;
-        width: 60px;
-        height: 60px;
+        width: 56px;
+        height: 56px;
         overflow: hidden;
 
         svg {

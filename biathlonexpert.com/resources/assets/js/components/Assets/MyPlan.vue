@@ -1,7 +1,7 @@
 <template>
   <div class="my-plan">
     <div class="my-plan__container">
-      <div class="my-plan__title">My Plan</div>
+      <div class="my-plan__title member-title">My Plan</div>
       <div class="my-plan__content">
         <div class="my-plan__content-col">
           <span class="my-plan__text">Available Books:</span>
@@ -126,10 +126,9 @@ export default {
   }
 
   &__title {
-    width: 100%;
-    font-size: 34px;
-    color: #FFFFFF;
-    text-align: left;
+    //font-size: 34px;
+    //color: #FFFFFF;
+    //text-align: left;
     margin-bottom: 24px;
   }
 
@@ -163,9 +162,8 @@ export default {
       justify-content: center;
     }
 
-    &__title,
     &__text {
-      font-size: 24px;
+      font-size: 18px;
       text-align: center;
     }
   }

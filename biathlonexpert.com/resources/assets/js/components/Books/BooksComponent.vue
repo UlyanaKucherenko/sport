@@ -11,7 +11,7 @@
       />
 
       <div class="member-books__wrap-pagination">
-        <div class="member-books__title">Recently downloaded books</div>
+        <div class="member-books__title member-title">Recently downloaded books</div>
         <div class="pagination">
           <b-pagination-nav :link-gen="linkGen" :number-of-pages="last_page" v-model="currentPage"/>
         </div>
@@ -22,11 +22,19 @@
           <div class="books-container__item" v-for="book in books" :key="book.id">
             <div class="books-container__img">
               <img :src="`/storage/${book.img}`" alt="">
+              <a class="books-container__btn" :href="`books/${book.id}`" @mousedown="handleClick(book)">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="28" cy="28" r="28" fill="red"/>
+                  <path
+                      d="M36.1666 24.5H31.4999V17.5H24.4999V24.5H19.8332L27.9999 32.6667L36.1666 24.5ZM19.8332 35V37.3333H36.1666V35H19.8332Z"
+                      fill="white"/>
+                </svg>
+              </a>
             </div>
             <div class="books-container__text">{{ book.title }}</div>
-            <a class="books-container__btn" :href="`books/${book.id}`" @mousedown="handleClick(book)">
-              <img src="/img/errow-download.svg"/>
-            </a>
+<!--            <a class="books-container__btn" :href="`books/${book.id}`" @mousedown="handleClick(book)">-->
+<!--              <img src="/img/errow-download-book.svg"/>-->
+<!--            </a>-->
           </div>
         </div>
       </div>
@@ -109,10 +117,6 @@ export default {
       downloadedBooks: 0,
     }
   },
-<<<<<<< HEAD
-
-=======
->>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
   created() {
     this.newDownloads = [...this.recentBooks];
     this.downloadedBooks = this.availableBooks;

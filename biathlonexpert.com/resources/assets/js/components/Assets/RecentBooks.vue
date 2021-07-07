@@ -1,26 +1,25 @@
 <template>
   <div class="dash-slider">
     <div class="container">
-      <div class="dash-slider__title">{{ title }}</div>
+      <div class="dash-slider__title member-title">{{ title }}</div>
     </div>
     <div class="slick-wrapper">
       <div class="slick-wrapper__overlay" />
-<<<<<<< HEAD
-      <div class="slick-wrapper__overlay-right" />
-=======
       <div class="slick-wrapper__overlay slick-wrapper__overlay--reversed" />
->>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
       <slick ref="slick" :options="slickOptions" v-if="showSlider" class="dash-slider__slick">
         <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
-          <div class="dash-slider__img"><img :src="`/storage/${slide.book.img}`" alt="">
+          <div class="dash-slider__img">
+            <img :src="`/storage/${slide.book.img}`" alt="">
             <a class="dash-slider__btn" :href="`books/${slide.book.id}`" @mousedown="handleClick(book)">
-              <img src="/img/errow-download.svg"/>
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="28" cy="28" r="28" fill="black"/>
+                <path
+                    d="M36.1666 24.5H31.4999V17.5H24.4999V24.5H19.8332L27.9999 32.6667L36.1666 24.5ZM19.8332 35V37.3333H36.1666V35H19.8332Z"
+                    fill="white"/>
+              </svg>
             </a>
           </div>
           <div class="dash-slider__text">{{ slide.book.title }}</div>
-<!--          <a class="dash-slider__btn" :href="`books/${slide.book.id}`" @mousedown="handleClick(book)">-->
-<!--            <img src="/img/errow-download.svg"/>-->
-<!--          </a>-->
         </div>
         <!---->
         <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
@@ -53,8 +52,9 @@ export default {
         slidesToShow: 6,
         slidesToScroll: 1,
         speed: 1200,
-        autoplay: false,
+        autoplay: true,
         arrows: true,
+        touchMove:true,
         prevArrow: '<span class="dash-slider__prev"></span>',
         nextArrow: '<span class="dash-slider__next"></span>',
         responsive: [
@@ -73,7 +73,8 @@ export default {
           {
             breakpoint: 500,
             settings: {
-              slidesToShow: 1
+              slidesToShow: 1,
+              arrows: false,
             }
           },
         ]
@@ -108,9 +109,9 @@ export default {
 
 .slick-wrapper {
   position: relative;
-
   &__overlay {
     position: absolute;
+    display: block;
     left: 0;
     top: 0;
     bottom: 0;
@@ -118,31 +119,14 @@ export default {
     z-index: 1;
     background: #1D1D1D;
     -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
-
-<<<<<<< HEAD
-
-    @media screen and (max-width: 320px) {
-      display: none;
-    }
-  }
-  &__overlay-right {
-    position: absolute;
-    right: 0;
-    left: auto;
-    top: 0;
-    bottom: 0;
-    width: calc(100% / 6 - 27px);
-    z-index: 1;
-    background: rgba(0, 0, 0, .6);
-    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
-    @media screen and (max-width: 320px) {
-      display: none;
-=======
     &--reversed {
       left: auto;
       right: 0;
       -webkit-mask-image: -webkit-gradient(linear, right top, left top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
->>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
+    }
+
+    @media screen and (max-width: 500px) {
+      display: none;
     }
   }
 }

@@ -21,8 +21,6 @@
     border-radius: 10px;
 
     &__title {
-      font-size: 34px;
-      font-weight: 600;
       margin-bottom: 20px;
     }
 
@@ -34,7 +32,7 @@
       z-index: 0;
 
       &:hover {
-        .dash-slider__btn img {
+        .dash-slider__btn  {
           display: block;
         }
       }
@@ -71,13 +69,14 @@
 
     &__btn {
       position: absolute;
+      display: none;
       bottom: 0;
       right: 0;
       z-index: 2;
       width: 54px;
       height: 54px;
-      img {
-        display: none;
+      svg circle {
+        fill: var(--color-member-area);
       }
     }
 
@@ -156,14 +155,6 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-
-      .dash-slider {
-
-        &__title {
-          font-size: 24px;
-          text-align: center;
-        }
-      }
     }
   }
 }

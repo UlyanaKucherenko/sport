@@ -3,13 +3,7 @@
   background: #1D1D1D;
   position: relative;
 
-  &__title {
-    font-size: calc(var(--space-unit)* 3.4);
-    line-height: 135%;
-    color: #FFFFFF;
-    text-align: left;
-
-  }
+  &__title {}
   &__row {
     display: flex;
   }
@@ -18,9 +12,10 @@
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr;
+
     @media screen and (max-width: 800px) {
       grid-template-columns: 1fr;
-      grid-row-gap: 10px ;
+      grid-row-gap: 16px ;
     }
 
   }
@@ -62,21 +57,25 @@
       }
     }
 
+    &__btn {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 56px;
+      height: 56px;
+
+      svg circle {
+        fill: var(--color-member-area);
+      }
+    }
+
     &__text {
       text-align: center;
       font-size: 14px;
       font-weight: 600;
       line-height: 20px;
       margin-top: 10px;
-    }
-
-    &__btn {
-      display: block;
-      position: absolute;
-      right: 10px;
-      bottom: 36px;
-      width: 56px;
-      height: 56px;
     }
 
   }

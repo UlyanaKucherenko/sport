@@ -3,10 +3,13 @@
   background: #1D1D1D;
 
   &__subtitle {
-    font-size: 34px;
-    color: #FFFFFF;
-    text-align: left;
     margin-bottom: 16px;
+  }
+
+  &__text {
+    font-size: 16px;
+    color: var(--color-member-area);
+    text-align: left;
   }
 
   &__plans {
@@ -31,15 +34,15 @@
 
   &__plan-title {
     font-size: 34px;
-    line-height: 46px;
+    line-height: 135%;
     letter-spacing: 0.0025em;
     color: #FFFFFF;
   }
 
   &__plan-price {
     font-size: 48px;
-    line-height: 65px;
-    color: #FF1212;
+    line-height: 135%;
+    color: var(--color-member-area);
     text-align: right;
   }
 
@@ -60,6 +63,10 @@
 @media (max-width: 814px) {
   .member-manage {
 
+    &__text{
+      text-align: center;
+    }
+
     &__plans {
       grid-template-columns: 1fr;
       max-width: 500px;
@@ -79,6 +86,7 @@
       align-items: center;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
+      row-gap: 5px;
       padding: 10px;
     }
 

@@ -6,8 +6,7 @@ export default {
         available: "Available e-books:",
         unsubscribe: "Unsubscribe",
         upgrade: "Upgrade",
-        month: "For month",
-        week: "for a week",
+        text: "Your plan "
     },
     "it": {
         title: "Piani disponibili",
@@ -16,8 +15,7 @@ export default {
         available: "Ebook disponibili:",
         unsubscribe: "Annulla l'iscrizione",
         upgrade: "Aggiornamento",
-        month: "Per mese",
-        week: "per una settimana",
+        text: "Il tuo piano "
     },
     "fr": {
         title: "Forfaits disponibles",
@@ -26,7 +24,7 @@ export default {
         available: "Ebooks disponibles:",
         unsubscribe: "Se désabonner",
         upgrade: "Améliorer",
-        month: "Pour mois",
-        week: "pour une semaine",
+        text: "Votre plan "
+
     }
 }
