@@ -9,4 +9,4 @@
             locale="{{ $locale }}"
     ></profile-page>
 
-@endsection   
+@endsection

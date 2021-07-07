@@ -46,6 +46,8 @@ class BookController extends Controller
             "availableBooks" => auth()->user()->books->count(),//$book->getBooksPlanCount(),
             "recentBooks" => json_encode($book->recentBooks()),
             "plan" => json_encode(Auth::user()->plan->only(['slug'])),
+//            "planTexts" => PlanText::whereLocale(App::getLocale())->get(),
+            "expiration_data" => auth()->user()->expiration_data,
         ]);
     }
 

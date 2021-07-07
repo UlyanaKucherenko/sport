@@ -1,0 +1,10 @@
+.member-title {
+  font-size: 34px;
+  color: #FFFFFF;
+  text-align: left;
+  @media screen and (max-width: 400px) {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+

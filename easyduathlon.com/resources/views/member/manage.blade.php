@@ -2,9 +2,10 @@
 
 @section('content')
 
-    <subscription-page
+    <membership-page
             :total-books="{{ $totalBooks }}"
             :available-books="{{ $availableBooks }}"
+            expiration-data="{{ $expiration_data }}"
             :data="{{ $data }}"
             :routes="{{ $routes }}"
             locale="{{ $locale }}"
@@ -12,6 +13,6 @@
             :plans="{{ $plans }}"
             :user="{{ $user }}"
             unsubscribe-errors="{{ $errors }}"
-    ></subscription-page>
+    ></membership-page>
 
 @endsection

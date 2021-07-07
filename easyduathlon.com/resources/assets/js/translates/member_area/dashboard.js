@@ -1,20 +1,20 @@
 export default {
     "en": {
-        available: "Available<br/>Books",
-        subscription: "End of<br/>Subscription",
+        available: "Available Books:",
+        subscription: "End of Subscription:",
         top: "Top",
-        books: "Your Books"
+        books: "My books"
     },
     "it": {
-        available: "Libri<br/>disponibili",
-        subscription: "Fine di<br/>Sottoscrizione",
+        available: "Libri disponibili:",
+        subscription: "Fine di Sottoscrizione:",
         top: "Superiore",
-        books: "I tuoi libri"
+        books: "I miei libri"
     },
     "fr": {
-        available: "Livres<br/>disponibles",
-        subscription: "Fin de<br/>Abonnement",
+        available: "Livres disponibles:",
+        subscription: "Fin de Abonnement:",
         top: "Haut",
-        books: "Vos livres"
+        books: "Mes livres"
     }
 }
