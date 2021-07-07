@@ -109,7 +109,10 @@ export default {
       downloadedBooks: 0,
     }
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
   created() {
     this.newDownloads = [...this.recentBooks];
     this.downloadedBooks = this.availableBooks;

@@ -10,8 +10,13 @@
           :planName="planName"
           btnName="Unsubscribe"
       />
+<<<<<<< HEAD
       <div class="member-manage__subtitle">{{vocab.title}}</div>
       <div class="member-manage__plans" v-if="currentPlan < 2">
+=======
+      <div class="member-manage__subtitle">Available plans</div>
+      <div class="member-manage__plans" v-if="currentPlan<2">
+>>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
         <div class="member-manage__plan" v-for="(text, index) in planTexts" v-if="currentPlan < index">
           <div class="member-manage__plan-title">{{text.title}}</div>
           <div class="member-manage__plan-price">{{plans[index].price}} €</div>

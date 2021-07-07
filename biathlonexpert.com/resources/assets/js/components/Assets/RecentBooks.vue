@@ -5,7 +5,11 @@
     </div>
     <div class="slick-wrapper">
       <div class="slick-wrapper__overlay" />
+<<<<<<< HEAD
       <div class="slick-wrapper__overlay-right" />
+=======
+      <div class="slick-wrapper__overlay slick-wrapper__overlay--reversed" />
+>>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
       <slick ref="slick" :options="slickOptions" v-if="showSlider" class="dash-slider__slick">
         <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
           <div class="dash-slider__img"><img :src="`/storage/${slide.book.img}`" alt="">
@@ -112,9 +116,10 @@ export default {
     bottom: 0;
     width: calc(100% / 6 - 27px);
     z-index: 1;
-    background: rgba(0, 0, 0, .6);
+    background: #1D1D1D;
     -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
 
+<<<<<<< HEAD
 
     @media screen and (max-width: 320px) {
       display: none;
@@ -132,6 +137,12 @@ export default {
     -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
     @media screen and (max-width: 320px) {
       display: none;
+=======
+    &--reversed {
+      left: auto;
+      right: 0;
+      -webkit-mask-image: -webkit-gradient(linear, right top, left top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+>>>>>>> 3762fcf9d4294606746b45467f52d3c8442afeae
     }
   }
 }
