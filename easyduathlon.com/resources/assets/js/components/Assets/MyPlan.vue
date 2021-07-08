@@ -1,18 +1,18 @@
 <template>
   <div class="my-plan">
     <div class="my-plan__container">
-      <div class="my-plan__title member-title">My plan</div>
+      <div class="my-plan__title member-title">{{ vocab.title }}</div>
       <div class="my-plan__content">
         <div class="my-plan__content-col">
-          <span class="my-plan__text">Available Books:</span>
+          <span class="my-plan__text">{{ vocab.available }}:</span>
           <span class="my-plan__number">{{ availableBooks }}/{{ totalBooks }}</span>
         </div>
         <div class="my-plan__content-col">
-          <span class="my-plan__text">End of Subscription:</span>
+          <span class="my-plan__text">{{ vocab.subscription }}:</span>
           <span class="my-plan__number">{{ expirationData }}</span>
         </div>
         <div class="my-plan__content-col">
-          <span class="my-plan__text">Plan:</span>
+          <span class="my-plan__text">{{ vocab.plan }}:</span>
           <span class="my-plan__number">{{ planName }}</span>
         </div>
       </div>
@@ -21,14 +21,14 @@
           class="member-btn"
           href="/member_area/manage"
       >
-        {{ btnName }}
+        {{ vocab.btnUpgrade }}
       </a>
       <a
           v-else
           @click="showConfirm"
           class="member-btn member-btn--reverse"
       >
-        {{ btnName }}
+        {{ vocab.btnUnsubscribe }}
       </a>
     </div>
 
@@ -165,7 +165,7 @@ export default {
     }
 
     &__text,
-    &__number{
+    &__number {
       font-size: 18px;
       text-align: center;
     }

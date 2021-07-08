@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-
-{{--{{dd($books)}}--}}
 @section('content')
     <books-page
             :props_books_data="{{ $books }}"

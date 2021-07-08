@@ -2,7 +2,7 @@
   <section class="member-books">
     <div class="container">
       <MyPlan
-          :local="locale"
+          :locale="locale"
           :expirationData="expirationData"
           :totalBooks="totalBooks"
           :availableBooks="availableBooks"
@@ -11,7 +11,7 @@
       />
 
       <div class="member-books__wrap-pagination">
-        <div class="member-books__title member-title">Recently downloaded books</div>
+        <div class="member-books__title member-title">{{vocab.title}}</div>
         <div class="pagination">
           <b-pagination-nav :link-gen="linkGen" :number-of-pages="last_page" v-model="currentPage"/>
         </div>
@@ -32,9 +32,6 @@
               </a>
             </div>
             <div class="books-container__text">{{ book.title }}</div>
-<!--            <a class="books-container__btn" :href="`books/${book.id}`" @mousedown="handleClick(book)">-->
-<!--              <img src="/img/errow-download-book.svg"/>-->
-<!--            </a>-->
           </div>
         </div>
       </div>
@@ -147,7 +144,6 @@ export default {
       return '?page=' + pageNum
     },
     handleClick(book) {
-      console.log('book', book)
       if (!this.newDownloads.find(function (element, index, array) { //finding similar elements in slider
         if (element.book.id === book.id) {
           return true;

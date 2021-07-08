@@ -1410,6 +1410,7 @@ a:hover {
   float: right;
   margin-top: 9px;
   margin-right: 15px;
+  display: none;
 }
 
 .membersMenu .btn-menu-close:before {
@@ -1505,6 +1506,10 @@ a:hover {
     display: block;
   }
 
+  .membersMenu .btn-menu-close {
+    display: block;
+  }
+
   .membersMenu .wrapMenu {
     opacity: 0;
     visibility: hidden;
@@ -1541,6 +1546,8 @@ a:hover {
     opacity: 1;
     visibility: visible;
     transition: all 0.25s linear;
+    overflow: auto;
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column-reverse;
   }

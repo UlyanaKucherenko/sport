@@ -178,6 +178,7 @@
     float: right;
     margin-top: 9px;
     margin-right: 15px;
+    display: none;
 
     &:before {
       position: absolute;
@@ -274,6 +275,9 @@
     .btn-menu-open {
       display: block;
     }
+    .btn-menu-close {
+      display: block;
+    }
 
     .wrapMenu {
       opacity: 0;
@@ -311,8 +315,8 @@
         opacity: 1;
         visibility: visible;
         transition: all .25s linear;
-        //overflow: auto;
-        //padding-bottom: 80px;
+        overflow: auto;
+        padding-bottom: 80px;
         display: flex;
         flex-direction: column-reverse;
       }

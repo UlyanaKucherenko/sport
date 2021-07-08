@@ -108,28 +108,23 @@ export default {
   methods: {
     next() {
       this.$refs.slick.next();
-    }
-    ,
+    },
     prev() {
       this.$refs.slick.prev();
-    }
-    ,
+    },
     reInit() {
       this.$nextTick(() => {
         this.showSlider = true;
         this.$refs.slick.reSlick();
       });
-    }
-    ,
-  }
-  ,
+    },
+  },
   watch: {
     recentBooks(newVal, oldVal) {
       this.showSlider = false;
       this.reInit();
     }
-  }
-  ,
+  },
 }
 </script>
 <style lang="scss">

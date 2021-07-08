@@ -2,7 +2,7 @@
   <section class="member-dashboard">
     <div class="container">
       <MyPlan
-        :local="locale"
+        :locale="locale"
         :expirationData="expirationData"
         :totalBooks="totalBooks"
         :availableBooks="totalBooks-availableBooks"

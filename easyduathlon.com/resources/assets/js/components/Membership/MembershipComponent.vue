@@ -2,7 +2,7 @@
   <section class="member-manage">
     <div class="container">
       <MyPlan
-          :local="locale"
+          :locale="locale"
           :totalBooks="totalBooks"
           :expirationData="expirationData"
           :availableBooks="availableBooks"
@@ -19,7 +19,7 @@
             {{text.text1}}<br>
             {{text.text2}}<br>
           </div>
-          <button @click="upgrade(index+1)" class="member-manage__plan-btn member-btn">{{ btnUpgrade }}</button>
+          <button @click="upgrade(index+1)" class="member-manage__plan-btn member-btn">{{ vocab.upgrade }}</button>
         </div>
       </div>
       <div class="member-manage__text" v-else >{{vocab.text}} {{ planName }}</div>
