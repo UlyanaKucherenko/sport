@@ -1588,6 +1588,7 @@ a:hover {
   padding: 20px 0;
   color: #FFFFFF;
   border-radius: 10px;
+  transition: all ease-out 5s;
 }
 
 .member-dashboard .dash-slider__title {
@@ -1628,15 +1629,6 @@ a:hover {
      object-fit: cover;
 }
 
-.member-dashboard .dash-slider__text {
-  font-size: 20px;
-  line-height: 140%;
-  font-weight: 600;
-  margin-top: 16px;
-  text-align: center;
-  min-height: 40px;
-}
-
 .member-dashboard .dash-slider__btn {
   position: absolute;
   display: none;
@@ -1645,10 +1637,20 @@ a:hover {
   z-index: 2;
   width: 54px;
   height: 54px;
+  transition: all ease-out 5s;
 }
 
 .member-dashboard .dash-slider__btn svg circle {
   fill: var(--color-member-area);
+}
+
+.member-dashboard .dash-slider__text {
+  font-size: 20px;
+  line-height: 140%;
+  font-weight: 600;
+  margin-top: 16px;
+  text-align: center;
+  min-height: 40px;
 }
 
 .member-dashboard .dash-slider__prev {
@@ -1817,7 +1819,7 @@ a:hover {
   margin: 0 -1px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 20px;
   color: white;
   background-color: transparent;
@@ -1829,6 +1831,7 @@ a:hover {
   background-color: transparent;
   border: none;
   margin: 0 -1px;
+  position: relative;
 }
 
 .member-books .pagination .page-item.active .page-link {
@@ -1872,6 +1875,7 @@ a:hover {
 .member-manage {
   padding: 80px 0 70px 0;
   background: #1D1D1D;
+  min-height: 800px;
 }
 
 .member-manage__subtitle {

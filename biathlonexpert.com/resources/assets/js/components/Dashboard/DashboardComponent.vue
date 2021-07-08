@@ -5,7 +5,7 @@
         :local="locale"
         :expirationData="expirationData"
         :totalBooks="totalBooks"
-        :availableBooks="availableBooks"
+        :availableBooks="totalBooks-availableBooks"
         :planName="planName"
         btnName="Upgrade"
       />

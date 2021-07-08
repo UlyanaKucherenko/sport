@@ -1,7 +1,7 @@
 <template>
   <div class="my-plan">
     <div class="my-plan__container">
-      <div class="my-plan__title member-title">My Plan</div>
+      <div class="my-plan__title member-title">My plan</div>
       <div class="my-plan__content">
         <div class="my-plan__content-col">
           <span class="my-plan__text">Available Books:</span>

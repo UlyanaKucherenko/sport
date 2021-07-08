@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{--{{dd($totalBooks)}}--}}
+{{--{{dd($locale)}}--}}
 
 @section('content')
 

@@ -4,8 +4,11 @@
       <div class="dash-slider__title member-title">{{ title }}</div>
     </div>
     <div class="slick-wrapper">
-      <div class="slick-wrapper__overlay" />
-      <div class="slick-wrapper__overlay slick-wrapper__overlay--reversed" />
+      <template v-if="overlaysAreVisible">
+        <div class="slick-wrapper__overlay"/>
+        <div class="slick-wrapper__overlay slick-wrapper__overlay--reversed"/>
+      </template>
+
       <slick ref="slick" :options="slickOptions" v-if="showSlider" class="dash-slider__slick">
         <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
           <div class="dash-slider__img">
@@ -21,12 +24,6 @@
           </div>
           <div class="dash-slider__text">{{ slide.book.title }}</div>
         </div>
-        <!---->
-        <div class="dash-slider__slide" v-for="(slide, key) in recentBooks" :key="key">
-          <div class="dash-slider__img"><img :src="`/storage/${slide.book.img}`" alt=""></div>
-          <div class="dash-slider__text">{{ slide.book.title }}</div>
-        </div>
-        <!---->
       </slick>
     </div>
   </div>
@@ -34,6 +31,13 @@
 <script>
 
 import Slick from 'vue-slick';
+
+const slidesToShow = {
+  1201: 5,
+  767: 3,
+  500: 1,
+  default: 7
+}
 
 export default {
   name: 'RecentBooks',
@@ -47,33 +51,36 @@ export default {
   components: {Slick},
   data() {
     return {
+      windowWidth: 0,
+      isActive: false,
+      recentBooks2: [...this.recentBooks, ...this.recentBooks.slice(-3)],
       showSlider: true,
       slickOptions: {
-        slidesToShow: 6,
+        slidesToShow: slidesToShow.default,
         slidesToScroll: 1,
         speed: 1200,
         autoplay: true,
         arrows: true,
-        touchMove:true,
+        touchMove: true,
         prevArrow: '<span class="dash-slider__prev"></span>',
         nextArrow: '<span class="dash-slider__next"></span>',
         responsive: [
           {
             breakpoint: 1201,
             settings: {
-              slidesToShow: 5
+              slidesToShow: slidesToShow[1201]
             }
           },
           {
             breakpoint: 767,
             settings: {
-              slidesToShow: 3
+              slidesToShow: slidesToShow[767]
             }
           },
           {
             breakpoint: 500,
             settings: {
-              slidesToShow: 1,
+              slidesToShow: slidesToShow[500],
               arrows: false,
             }
           },
@@ -82,33 +89,54 @@ export default {
     }
   },
   computed: {
+    overlaysAreVisible() {
+      const booksCount = this.recentBooks.length
+      let currentSlidesToShow
+      if (this.windowWidth >= 1201) currentSlidesToShow = slidesToShow.default
+      else if (this.windowWidth >= 767) currentSlidesToShow = slidesToShow[1201]
+      else if (this.windowWidth >= 500) currentSlidesToShow = slidesToShow[767]
+      else currentSlidesToShow = slidesToShow[500]
+      return booksCount > currentSlidesToShow
+    }
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth
+    })
   },
   methods: {
     next() {
       this.$refs.slick.next();
-    },
+    }
+    ,
     prev() {
       this.$refs.slick.prev();
-    },
+    }
+    ,
     reInit() {
       this.$nextTick(() => {
         this.showSlider = true;
         this.$refs.slick.reSlick();
       });
-    },
-  },
+    }
+    ,
+  }
+  ,
   watch: {
     recentBooks(newVal, oldVal) {
       this.showSlider = false;
       this.reInit();
     }
-  },
+  }
+  ,
 }
 </script>
 <style lang="scss">
 
 .slick-wrapper {
   position: relative;
+
   &__overlay {
     position: absolute;
     display: block;
@@ -118,11 +146,18 @@ export default {
     width: calc(100% / 6 - 27px);
     z-index: 1;
     background: #1D1D1D;
-    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 1)), to(rgb(0 0 0 / 0%)));
+
     &--reversed {
       left: auto;
       right: 0;
-      -webkit-mask-image: -webkit-gradient(linear, right top, left top, from(rgba(0,0,0,1)), to(rgb(0 0 0 / 0%)));
+      -webkit-mask-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 1)), to(rgb(0 0 0 / 0%)));
+    }
+
+    @media screen and (max-width: 767px) {
+      &__overlay {
+        width: calc(100% / 6 + 40px);
+      }
     }
 
     @media screen and (max-width: 500px) {

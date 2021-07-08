@@ -93,7 +93,7 @@
       margin: 0 -1px;
       text-decoration: none;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 20px;
       line-height: 20px;
       color: white;
       background-color: transparent;
@@ -103,10 +103,11 @@
 
     .page-item.disabled {
       .page-link {
-        color: #F4F4F4;;
+        color: #F4F4F4;
         background-color: transparent;
         border: none;
         margin: 0 -1px;
+        position: relative;
       }
     }
 
