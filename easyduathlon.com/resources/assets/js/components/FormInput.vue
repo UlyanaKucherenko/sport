@@ -40,6 +40,19 @@
     />
 
     <input
+        v-else-if="name === 'password'"
+        class="form-field__input"
+        :class="{
+        'form-field__holder--reversed': reversed,
+        'form-field__holder--has-error': error,
+      }"
+        :placeholder="placeholder || title"
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+        type="password"
+    >
+
+    <input
       v-else
       class="form-field__input"
       :class="{
@@ -76,7 +89,8 @@ export default {
     rows: String,
     tag: String,
     error: [String, Boolean],
-    reversed: Boolean
+    reversed: Boolean,
+    name: String
   }
 }
 </script>
