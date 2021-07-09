@@ -1,6 +1,6 @@
 export default {
     "en": {
-        title: "Recently Downloaded",
+        title: "Recently downloaded books",
         btn: "Upgrade",
     },
     "it": {

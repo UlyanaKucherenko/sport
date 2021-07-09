@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{--{{dd($locale)}}--}}
 
 @section('content')
 
@@ -9,6 +10,10 @@
             locale="{{ $locale }}"
             :recent-books="{{ $recentBooks }}"
             :top-book="{{ $topBook }}"
+            :plan-texts="{{ $planTexts }}"
+            :plans="{{ $plans }}"
+            :user="{{ $user }}"
+{{--            :routes="{{ $routes }}"--}}
     ></dashboard-page>
 
 @endsection

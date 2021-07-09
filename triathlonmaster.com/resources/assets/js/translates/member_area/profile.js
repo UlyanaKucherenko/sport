@@ -17,7 +17,7 @@ export default {
         systolicBlood: "Systolic Blood Pressure",
         diastolicBlood: "Diastolic Blood Pressure",
         age: "Age",
-        tab1: "Personal data",
+        tab1: "Profile",
         tab2: "Anthropometric data",
 
     },
@@ -39,7 +39,7 @@ export default {
         systolicBlood: "Pressione sanguigna sistolica",
         diastolicBlood: "Pressione sanguigna diastolica",
         age: "Età",
-        tab1: "Dati personali",
+        tab1: "Profilo",
         tab2: "Dati antropometrici",
     },
     "fr": {
@@ -60,7 +60,7 @@ export default {
         systolicBlood: "La pression artérielle systolique",
         diastolicBlood: "Pression sanguine diastolique",
         age: "Âge",
-        tab1: "Données personnelles",
+        tab1: "Profil",
         tab2: "Données anthropométriques",
     }
 }
