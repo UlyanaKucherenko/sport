@@ -72,6 +72,8 @@ class MemberController extends Controller
             "locale" => App::getLocale(),
             "recentBooks" => json_encode($book->popularBooks()),
             "topBook" => json_encode($book->bestBook()),
+            "planTexts" => PlanText::whereLocale(App::getLocale())->get(),
+            "plans" => Plan::all(),
         ]);
     }
 
@@ -83,6 +85,7 @@ class MemberController extends Controller
         return view('member.manage', [
             "totalBooks" => $book->getBooksPlanCount(),//$book->all()->count(),
             "availableBooks" => auth()->user()->books->count(),//$book->getBooksPlanCount(),
+            "expiration_data" => auth()->user()->expiration_data,
             "routes" => $this->routes,
             "data" => auth()->user()->getManageUserData(),
             "locale" => App::getLocale(),
