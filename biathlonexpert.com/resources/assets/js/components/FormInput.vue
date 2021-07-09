@@ -26,6 +26,19 @@
     />
 
     <input
+        v-else-if="name === 'password'"
+        class="form-field__input"
+        :class="{
+        'form-field__holder--reversed': reversed,
+        'form-field__holder--has-error': error,
+      }"
+        :placeholder="placeholder || title"
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+        type="password"
+    >
+
+    <input
       v-else
       class="form-field__input"
       :class="{
@@ -62,7 +75,8 @@ export default {
     mask: String,
     rows: String,
     error: [String, Boolean],
-    reversed: Boolean
+    reversed: Boolean,
+    name: String,
   }
 }
 </script>
@@ -86,7 +100,7 @@ export default {
   &__input {
     width: 100%;
     font-size: 14px;
-    color: white;
+    color: black;
     padding: 10px 0;
     background: transparent;
     border: none;
@@ -94,7 +108,7 @@ export default {
     transition: .3s;
 
     &::placeholder {
-      color: white;
+      color: black;
     }
 
     &--has-error {

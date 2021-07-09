@@ -1428,6 +1428,7 @@ a:hover {
   float: right;
   margin-top: 9px;
   margin-right: 15px;
+  display: none;
 }
 
 .membersMenu .btn-menu-close:before {
@@ -1512,6 +1513,12 @@ a:hover {
   margin-left: 10px;
 }
 
+@media screen and (max-width: 1200px) {
+  .membersMenu .wrapMenu .menuList__link {
+    font-size: 18px;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .membersMenu {
     position: fixed;
@@ -1522,6 +1529,10 @@ a:hover {
   }
 
   .membersMenu .btn-menu-open {
+    display: block;
+  }
+
+  .membersMenu .btn-menu-close {
     display: block;
   }
 
@@ -1623,7 +1634,7 @@ a:hover {
 }
 
 .member-dashboard .dash-slider__slide:hover .dash-slider__btn {
-  display: block;
+  opacity: 1;
 }
 
 .member-dashboard .dash-slider__img {
@@ -1659,12 +1670,13 @@ a:hover {
 
 .member-dashboard .dash-slider__btn {
   position: absolute;
-  display: none;
+  opacity: 0;
   bottom: 0;
   right: 0;
   z-index: 2;
   width: 54px;
   height: 54px;
+  transition: 0.3s;
 }
 
 .member-dashboard .dash-slider__btn svg circle {
@@ -1782,7 +1794,7 @@ a:hover {
 }
 
 .member-books .books-container__item:hover .books-container__btn {
-  display: block;
+  opacity: 1;
 }
 
 .member-books .books-container__img {
@@ -1806,12 +1818,13 @@ a:hover {
 }
 
 .member-books .books-container__btn {
-  display: block;
+  opacity: 0;
   position: absolute;
   right: 0;
   bottom: 0;
   width: 56px;
   height: 56px;
+  transition: 0.3s;
 }
 
 .member-books .books-container__btn svg circle {
@@ -1954,18 +1967,8 @@ a:hover {
   width: fit-content;
 }
 
-@media (max-width: 814px) {
-  .member-manage__text {
-    text-align: center;
-  }
-
-  .member-manage__plans {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    width: 100%;
-    row-gap: 15px;
-    margin: 0 auto;
-  }
+.member-manage__plan-btn:lang(it) {
+  padding: 10px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -1993,6 +1996,28 @@ a:hover {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 814px) {
+  .member-manage__plan-title {
+    font-size: 28px;
+  }
+
+  .member-manage__plan-price {
+    font-size: 35px;
+  }
+
+  .member-manage__text {
+    text-align: center;
+  }
+
+  .member-manage__plans {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    width: 100%;
+    row-gap: 15px;
     margin: 0 auto;
   }
 }
@@ -2069,7 +2094,7 @@ a:hover {
 
 .member-profile .form .required-text {
   position: absolute;
-  bottom: 0;
+  bottom: -8px;
   right: 0;
   font-size: 12px;
   min-height: 20px;
@@ -2125,6 +2150,7 @@ a:hover {
 @media screen and (max-width: 400px) {
   .member-btn {
     padding: 10px 52px 10px;
+    font-size: 16px;
   }
 }
 

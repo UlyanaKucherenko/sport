@@ -57,22 +57,8 @@
 
   &__plan-btn {
     width: fit-content;
-  }
-}
-
-@media (max-width: 814px) {
-  .member-manage {
-
-    &__text{
-      text-align: center;
-    }
-
-    &__plans {
-      grid-template-columns: 1fr;
-      max-width: 500px;
-      width: 100%;
-      row-gap: 15px;
-      margin: 0 auto;
+    &:lang(it) {
+      padding: 10px;
     }
   }
 }
@@ -102,6 +88,31 @@
 
     &__plan-btn {
       width: fit-content;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 814px) {
+  .member-manage {
+
+    &__plan-title {
+      font-size: 28px;
+    }
+
+    &__plan-price {
+      font-size: 35px;
+    }
+
+    &__text {
+      text-align: center;
+    }
+
+    &__plans {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      width: 100%;
+      row-gap: 15px;
       margin: 0 auto;
     }
   }
