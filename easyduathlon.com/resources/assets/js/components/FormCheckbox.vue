@@ -74,7 +74,7 @@ export default {
     }
 
     &__text {
-
+      color: black;
     }
   }
 </style>

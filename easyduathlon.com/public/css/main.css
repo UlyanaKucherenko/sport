@@ -1644,7 +1644,7 @@ a:hover {
   z-index: 2;
   width: 54px;
   height: 54px;
-  transition: all ease-out 5s;
+  transition: all 5s ease-out;
 }
 
 .member-dashboard .dash-slider__btn svg circle {
