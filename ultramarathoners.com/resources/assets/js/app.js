@@ -42,10 +42,6 @@ const moment = require('moment');
 require('moment/locale/ru');
 Vue.use(require('vue-moment'), {moment});
 
-// const weather = require('openweather-apis');
-// Vue.use(require('openweather-apis'), {weather});
-
-
 
 
 Vue.component('header-section', require('./components/Layout/HeaderComponent').default);

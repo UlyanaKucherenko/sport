@@ -19,7 +19,7 @@
       <a
           v-if="btnName === 'Upgrade'"
           class="member-btn"
-          href="/member_area/manage"
+          href="/member-area/manage"
       >
         {{ vocab.btnUpgrade }}
       </a>
