@@ -262,7 +262,19 @@
   }
 }
 
-// === Small device === //
+@media screen and (max-width: 1200px) {
+  .membersMenu {
+    .wrapMenu{
+      .menuList {
+        &__link {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+}
+
 @media screen and (max-width: 1000px) {
 
   .membersMenu {

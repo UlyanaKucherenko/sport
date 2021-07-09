@@ -9,16 +9,16 @@
         <div class="wrapMenu" :class="{'wrapMenuOpen': menuOpen}">
           <ul class="menuList">
             <li><a :href="routes.dashboard" class="menuList__link" :class="{active:textSlideDashboard}">
-              <div class="text-slide__text">{{ vocab.dashboard }}</div>
+              {{ vocab.dashboard }}
             </a></li>
             <li><a :href="routes.indexBook" class="menuList__link" :class="{active:textSlideIndexBook}">
-              <div class="text-slide__text">{{ vocab.ebooks }}</div>
+             {{ vocab.ebooks }}
             </a></li>
             <li><a :href="routes.manage" class="menuList__link" :class="{active:textSlideManage}">
-              <div class="text-slide__text" v-html="vocab.manage"></div>
+              <div v-html="vocab.manage"></div>
             </a></li>
             <li><a :href="routes.logout" class="menuList__link">
-              <div class="text-slide__text" v-html="vocab.logout"></div>
+              <div v-html="vocab.logout"></div>
             </a></li>
           </ul>
 

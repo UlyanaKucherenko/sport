@@ -24,7 +24,7 @@
   &__plan {
     background-color: #353535;
     border-radius: 16px;
-    padding: 32px 40px 40px;
+    padding: 32px 50px 40px;
 
     display: grid;
     justify-content: space-between;
@@ -59,25 +59,13 @@
 
   &__plan-btn {
     width: fit-content;
-  }
-}
-
-@media (max-width: 814px) {
-  .member-manage {
-
-    &__text{
-      text-align: center;
-    }
-
-    &__plans {
-      grid-template-columns: 1fr;
-      max-width: 500px;
-      width: 100%;
-      row-gap: 15px;
-      margin: 0 auto;
+    &:lang(it) {
+      padding: 10px;
     }
   }
+
 }
+
 
 @media screen and (max-width: 1200px) {
   .member-manage {
@@ -104,6 +92,23 @@
 
     &__plan-btn {
       width: fit-content;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 814px) {
+  .member-manage {
+
+    &__text{
+      text-align: center;
+    }
+
+    &__plans {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      width: 100%;
+      row-gap: 15px;
       margin: 0 auto;
     }
   }
