@@ -41,8 +41,7 @@
           type="password"
           :placeholder="vocab.password"
           :error="
-            formErrors.password ||
-            (errors.has('password') ? formVocab.password : '')
+            formErrors.password || (errors.has('password') ? formVocab.password : '')
           "
           v-model="formData.password"
           v-validate="'required|min:6'"

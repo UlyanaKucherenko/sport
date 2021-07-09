@@ -5,7 +5,7 @@
                 <div class="col-md-6">
                     <div class="form__row">
                         <span class="required-text">{{ errors.first('body.purpose') }}</span>
-                        <label class="form__lbl">{{ this.vocab[this.locale].purpose }}</label>
+                        <label class="form__lbl">{{ vocab.purpose }}</label>
                         <select class="form__sel" v-model="data.purpose" name="purpose">
                             <option value="" selected disabled>Choose Purpose</option>
                             <option value="0">Do yoga once a day</option>
@@ -16,64 +16,64 @@
                     </div>
                     <div class="form__row">
                         <span class="required-text">{{ errors.first('body.height') }}</span>
-                        <label class="form__lbl">{{ this.vocab[this.locale].height }}</label>
+                        <label class="form__lbl">{{ vocab.height }}</label>
                         <input
                                 v-validate="'required|numeric'"
                                 :class="{'required': errors.has('body.height') }"
                                 name="height"
                                 class="form__inp"
                                 v-model="data.height"
-                                :placeholder="this.vocab[this.locale].height">
+                                :placeholder="vocab.height">
                     </div>
                     <div class="form__row">
                         <span class="required-text">{{ errors.first('body.weight') }}</span>
-                        <label class="form__lbl">{{ this.vocab[this.locale].bodyWeight }}</label>
+                        <label class="form__lbl">{{ vocab.bodyWeight }}</label>
                         <input
                                 v-validate="'required|numeric'"
                                 :class="{'required': errors.has('body.weight') }"
                                 name="weight"
                                 class="form__inp"
                                 v-model="data.weight"
-                                :placeholder="this.vocab[this.locale].bodyWeight">
+                                :placeholder="vocab.bodyWeight">
                     </div>
                     <div class="form__row">
                         <span class="required-text">{{ errors.first('body.hip') }}</span>
-                        <label class="form__lbl">{{ this.vocab[this.locale].hipCircumference }}</label>
+                        <label class="form__lbl">{{vocab.hipCircumference }}</label>
                         <input
                                 v-validate="'required|numeric|min_value:1'"
                                 :class="{'required': errors.has('body.hip') }"
                                 name="hip"
                                 class="form__inp"
                                 v-model="data.hip"
-                                :placeholder="this.vocab[this.locale].hipCircumference">
+                                :placeholder="vocab.hipCircumference">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form__row">
                         <span class="required-text">{{ errors.first('body.systolic') }}</span>
-                        <label class="form__lbl">{{ this.vocab[this.locale].systolicBlood }}</label>
+                        <label class="form__lbl">{{ vocab.systolicBlood }}</label>
                         <input
                                 v-validate="'required|numeric|min_value:1'"
                                 :class="{'required': errors.has('body.systolic') }"
                                 name="systolic"
                                 class="form__inp"
                                 v-model="data.systolic"
-                                :placeholder="this.vocab[this.locale].systolicBlood">
+                                :placeholder="vocab.systolicBlood">
                     </div>
                     <div class="form__row">
                         <span class="required-text">{{ errors.first('body.diastolic') }}</span>
-                        <label class="form__lbl">{{ this.vocab[this.locale].diastolicBlood }}</label>
+                        <label class="form__lbl">{{ vocab.diastolicBlood }}</label>
                         <input
                                 name="diastolic"
                                 class="form__inp"
                                 v-validate="'required|numeric|min_value:1'"
                                 :class="{'required': errors.has('body.diastolic') }"
                                 v-model="data.diastolic"
-                                :placeholder="this.vocab[this.locale].diastolicBlood">
+                                :placeholder="vocab.diastolicBlood">
                     </div>
                     <div class="form__row">
                         <button type="submit" class="form__btn">
-                            {{ this.vocab[this.locale].btnSave }}
+                            {{ this.vocab.btnSave }}
                         </button>
                     </div>
                 </div>
@@ -103,6 +103,11 @@
                 require: true
             }
         },
+      data(){
+          return {
+            vocab: vocab[this.locale],
+          }
+      },
         methods: {
             updateUserHandler() {
                 console.log("updateUserHandler");
@@ -143,8 +148,6 @@
                 });
             }
         },
-        created() {
-            this.vocab = vocab;
-        },
+
     }
 </script>
