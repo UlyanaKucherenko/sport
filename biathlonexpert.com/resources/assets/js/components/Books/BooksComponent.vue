@@ -2,7 +2,7 @@
   <section class="member-books">
     <div class="container">
       <MyPlan
-          :local="locale"
+          :locale="locale"
           :expirationData="expirationData"
           :totalBooks="totalBooks"
           :availableBooks="availableBooks"
@@ -32,9 +32,6 @@
               </a>
             </div>
             <div class="books-container__text">{{ book.title }}</div>
-<!--            <a class="books-container__btn" :href="`books/${book.id}`" @mousedown="handleClick(book)">-->
-<!--              <img src="/img/errow-download-book.svg"/>-->
-<!--            </a>-->
           </div>
         </div>
       </div>
@@ -136,8 +133,6 @@ export default {
           total: this.total,
         } = this.props_books_data
     );
-    console.log('data',this.books)
-    console.log('last_page',this.props_books_data.last_page)
 
     if (this.downloadErrors.length > 2) {
       this.showPopup = 1;

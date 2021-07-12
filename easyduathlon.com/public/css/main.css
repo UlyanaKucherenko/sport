@@ -1239,6 +1239,12 @@ a:hover {
   z-index: 1;
 }
 
+.membersMenu .wrap-mobMenu {
+  display: none;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .membersMenu .wrapMenu {
   display: grid;
   justify-content: space-between;
@@ -1384,7 +1390,6 @@ a:hover {
   width: 35px;
   height: 35px;
   cursor: pointer;
-  float: right;
   margin-top: 9px;
   margin-right: 15px;
 }
@@ -1407,7 +1412,6 @@ a:hover {
   width: 35px;
   height: 35px;
   cursor: pointer;
-  float: right;
   margin-top: 9px;
   margin-right: 15px;
   display: none;
@@ -1443,56 +1447,6 @@ a:hover {
   transform: rotate(-45deg);
 }
 
-.membersMenu .members_menu_toggle {
-  display: none;
-}
-
-.members-menu-top {
-  padding: 25px 0 25px 150px;
-  background-color: #FBFBFC;
-}
-
-.members-menu-top .wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.members-menu-top .wrap .date-today {
-  display: inline-block;
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  background: var(--color-member-area);
-  padding: 8px 22px;
-  border-radius: 4px;
-  box-shadow: 0 5px 19px rgba(var(--color-member-area), 0.2);
-}
-
-.members-menu-top .wrap .logout {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.members-menu-top .wrap .logout__text {
-  font-size: 14px;
-  font-weight: 600;
-  color: #898888;
-}
-
-.members-menu-top .wrap .logout__img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  background: var(--color-member-area);
-  box-shadow: 0 5px 29px rgba(var(--color-member-area), 0.3);
-  border-radius: 10px;
-  margin-left: 10px;
-}
-
 @media screen and (max-width: 1200px) {
   .membersMenu .wrapMenu .menuList__link {
     font-size: 18px;
@@ -1514,6 +1468,10 @@ a:hover {
 
   .membersMenu .btn-menu-close {
     display: block;
+  }
+
+  .membersMenu .wrap-mobMenu {
+    display: flex;
   }
 
   .membersMenu .wrapMenu {
@@ -1556,26 +1514,6 @@ a:hover {
     padding-bottom: 80px;
     display: flex;
     flex-direction: column-reverse;
-  }
-
-  .members-menu-top {
-    padding: 80px 0 25px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .members-menu-top .wrap .date-today {
-    font-size: 14px;
-    padding: 8px 10px;
-  }
-
-  .members-menu-top .wrap .logout__img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .members-menu-top .wrap .logout__img svg {
-    width: 20px;
   }
 }
 
