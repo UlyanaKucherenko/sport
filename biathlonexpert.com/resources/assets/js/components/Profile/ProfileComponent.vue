@@ -1,6 +1,6 @@
 <template>
   <section class="member-profile">
-    <div class="container">
+    <div class="container member-profile__container">
       <div class="member-profile__title">{{ this.vocab.tab1 }}</div>
       <personal-form
           v-if="activeTab"

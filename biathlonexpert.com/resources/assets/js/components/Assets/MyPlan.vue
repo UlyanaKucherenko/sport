@@ -106,7 +106,7 @@ export default {
     flex-wrap: wrap;
     width: 100%;
     color: white;
-    padding-top: 50px;
+    //padding-top: 50px;
     margin-bottom: 83px;
   }
 

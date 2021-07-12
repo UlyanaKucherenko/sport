@@ -7,6 +7,10 @@
   min-height: calc(100vh - 190px);
   background-color: #1D1D1D;
 
+  &__container {
+    padding-top: 50px;
+  }
+
   &__title {
     color: #FFFFFF;
     text-align: center;
